@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://x6th45uv855v"]
+
+[ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(442, -4)
+
+[node name="Claw" parent="." instance=ExtResource("1_2abi3")]
+position = Vector2(53, 18)

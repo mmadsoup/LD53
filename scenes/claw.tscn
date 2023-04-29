@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjiqxalte7q2t"]
+
+[ext_resource type="Script" path="res://scripts/claw.gd" id="1_4wr3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_621iv"]
+
+[node name="Claw" type="Node2D"]
+script = ExtResource("1_4wr3e")
+move_speed = 150
+
+[node name="Pivot" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot"]
+shape = SubResource("RectangleShape2D_6se6f")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Pivot"]
+scale = Vector2(20, 20)
+mesh = SubResource("BoxMesh_621iv")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../Pivot")
+node_b = NodePath("../Claw")
+length = 100.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../Pivot")
+node_b = NodePath("../Claw")
+length = 100.0
+
+[node name="Claw" type="RigidBody2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw"]
+shape = SubResource("RectangleShape2D_6se6f")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Claw"]
+scale = Vector2(103.998, -15.959)
+mesh = SubResource("BoxMesh_621iv")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Claw"]
+position = Vector2(-43, 19)
+rotation = 1.57243
+scale = Vector2(-54.8899, 17.8608)
+mesh = SubResource("BoxMesh_621iv")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Claw"]
+position = Vector2(47, 19)
+rotation = 1.57243
+scale = Vector2(-54.8899, 17.8608)
+mesh = SubResource("BoxMesh_621iv")
+
+[node name="Line2D" type="Line2D" parent="."]
