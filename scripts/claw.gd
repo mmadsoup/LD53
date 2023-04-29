@@ -30,7 +30,7 @@ func _process(delta):
 		if Globals.grabbed_item == null:
 			Globals.grab = !Globals.grab
 		if Globals.grabbed_item != null and Globals.grab:
-			Globals.grabbed_item.apply_impulse(Vector2(0, 100), Vector2(Globals.grabbed_item.global_position.x, 530))
+			Globals.grabbed_item.apply_impulse(Vector2(0, 10), Vector2(Globals.grabbed_item.global_position.x, 530))
 			Globals.grabbed_item = null
 			Globals.grab = false
 		
