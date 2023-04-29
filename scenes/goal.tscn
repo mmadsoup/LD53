@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://i04iweywhtkk"]
+
+[ext_resource type="Texture2D" uid="uid://500eyt2o1ha2" path="res://assets/deliveryTruck.png" id="1_266no"]
+[ext_resource type="Script" path="res://scripts/goalcheck.gd" id="1_faqd6"]
+[ext_resource type="Texture2D" uid="uid://ssinsms0h5s2" path="res://assets/cautionstripe.png" id="3_ik5ve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s52f"]
+size = Vector2(344, 84.5)
+
+[sub_resource type="Animation" id="Animation_k0d6k"]
+resource_name = "truck_depart"
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeliveryTruck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0216535, 0.0368251, 0.0511301, 0.0649876, 0.0781704, 0.0903317, 0.105557, 0.583208),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-134, -74), Vector2(-134, -83), Vector2(-134, -74), Vector2(-134, -83), Vector2(-134, -74), Vector2(-134, -83), Vector2(-134, -74), Vector2(-134, -83), Vector2(-572, -83)]
+}
+
+[sub_resource type="Animation" id="Animation_ov7yx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeliveryTruck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-134, -74)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t43n"]
+_data = {
+"RESET": SubResource("Animation_ov7yx"),
+"truck_depart": SubResource("Animation_k0d6k")
+}
+
+[node name="goal" type="Node2D"]
+script = ExtResource("1_faqd6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(79, -43.75)
+shape = SubResource("RectangleShape2D_1s52f")
+
+[node name="DeliveryTruck" type="Sprite2D" parent="."]
+position = Vector2(-134, -74)
+texture = ExtResource("1_266no")
+
+[node name="Cautionstripe" type="Sprite2D" parent="."]
+position = Vector2(125, -15)
+texture = ExtResource("3_ik5ve")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8t43n")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
