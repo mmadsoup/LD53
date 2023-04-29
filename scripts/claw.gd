@@ -28,11 +28,16 @@ func _process(delta):
 	if Input.is_action_just_pressed('ui_select'):
 		if Globals.grabbed_item == null:
 			Globals.grab = !Globals.grab
+		elif Globals.grabbed_item != null and Globals.grab:
+			#Globals.grabbed_item.apply_impulse(Vector2(0, 100), Vector2(Globals.grabbed_item.x, 530))
+			Globals.grabbed_item = null
+			Globals.grab = false
+		
 		if Globals.grab:
 			damped_spring_joint_2d.rest_length = 500
 		else:
 			damped_spring_joint_2d.rest_length = 100
-	
+		
 	if Globals.grab and Globals.grabbed_item != null:
 		damped_spring_joint_2d.rest_length = 100
 

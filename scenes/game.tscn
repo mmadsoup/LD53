@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://x6th45uv855v"]
+[gd_scene load_steps=8 format=3 uid="uid://x6th45uv855v"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
 [ext_resource type="Script" path="res://scripts/claw.gd" id="1_xmj6o"]
 [ext_resource type="PackedScene" uid="uid://dnp7imc6fc1x" path="res://scenes/mail.tscn" id="2_5kvca"]
 
@@ -14,6 +15,7 @@ size = Vector2(103, 18)
 size = Vector2(1943, 70)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_7ugy6")
 
 [node name="Claw" type="Node2D" parent="."]
 position = Vector2(53, 18)
