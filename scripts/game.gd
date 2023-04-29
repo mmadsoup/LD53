@@ -2,7 +2,7 @@ extends Node2D
 @onready var claw = $Claw/Claw
 
 func _process(_delta):
-	if Globals.grabbed_item != null:
+	if Globals.grabbed_item != null and Globals.grab:
 		var _offx = 50
 		var _offy = 80
 		

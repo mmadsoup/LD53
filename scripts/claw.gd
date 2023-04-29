@@ -7,12 +7,13 @@ extends Node2D
 @onready var damped_spring_joint_2d = $DampedSpringJoint2D
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	line_2d.add_point(pivot.position, 0)
 	line_2d.add_point(claw.position, 1)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
+
 	line_2d.set_point_position(0, pivot.position)
 	line_2d.set_point_position(1, claw.position)
 	
@@ -28,8 +29,7 @@ func _process(delta):
 	if Input.is_action_just_pressed('ui_select'):
 		if Globals.grabbed_item == null:
 			Globals.grab = !Globals.grab
-		elif Globals.grabbed_item != null and Globals.grab:
-			#Globals.grabbed_item.apply_impulse(Vector2(0, 100), Vector2(Globals.grabbed_item.x, 530))
+		if Globals.grabbed_item != null and Globals.grab:
 			Globals.grabbed_item = null
 			Globals.grab = false
 		
