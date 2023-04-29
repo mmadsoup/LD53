@@ -13,7 +13,7 @@ func _ready():
 func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
-		Global.currentQuests.append(obj)
+		Globals.currentQuests.append(obj)
 	populateQuestUI(true)
 func randomLetter():
 	var l = validObjectCharacters[randi_range(0,validObjectCharacters.length()-1)]
@@ -22,19 +22,19 @@ func randomLetter():
 func populateQuestUI(makeBoxes:bool=false):
 	$label_needs/quests.text=''
 	var coveredChars = [] # i dont like this but whatever
-	for q in Global.currentQuests:
+	for q in Globals.currentQuests:
 		if q not in coveredChars:
-			if q in Global.fulfilled:
-				$label_needs/quests.text+="[s]" +str(Global.currentQuests.count(q))+"x [font=res://assets/ui/GumiFontSymbols-Regular.ttf][color=green]"+q+"[/color][/font][/s]\n"
+			if q in Globals.fulfilled:
+				$label_needs/quests.text+="[s]" +str(Globals.currentQuests.count(q))+"x [font=res://assets/ui/GumiFontSymbols-Regular.ttf][color=green]"+q+"[/color][/font][/s]\n"
 			else:
-				$label_needs/quests.text+= str(Global.currentQuests.count(q))+"x [font=res://assets/ui/GumiFontSymbols-Regular.ttf][color=red]"+q+"[/color][/font]\n"
+				$label_needs/quests.text+= str(Globals.currentQuests.count(q))+"x [font=res://assets/ui/GumiFontSymbols-Regular.ttf][color=red]"+q+"[/color][/font]\n"
 			coveredChars.append(q)
 	if makeBoxes:_makeTestBoxes()
 
 
 
 func _makeTestBoxes():
-	for g in Global.currentQuests:
+	for g in Globals.currentQuests:
 
 		var box = testBox.instantiate()
 		box.name = g

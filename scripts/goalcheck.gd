@@ -5,17 +5,17 @@ extends Node2D
 func _on_area_2d_body_entered(body):
 
 	body.queue_free()
-	Global.fulfilled.append(str(body.name))
-	if Global.currentQuests.has(body.name):
-		#Global.currentQuests.erase(body.name)
+	Globals.fulfilled.append(str(body.name))
+	if Globals.currentQuests.has(body.name):
+		#Globals.currentQuests.erase(body.name)
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
 		checkVictory()
 		
 func checkVictory():
-	print(Global.fulfilled)
-	var a = Global.currentQuests.duplicate() #itll sort the main array if we dont do it like this
+	print(Globals.fulfilled)
+	var a = Globals.currentQuests.duplicate() #itll sort the main array if we dont do it like this
 	a.sort()
-	var b = Global.fulfilled.duplicate()
+	var b = Globals.fulfilled.duplicate()
 	b.sort()
 
 	if a.hash()==b.hash():
