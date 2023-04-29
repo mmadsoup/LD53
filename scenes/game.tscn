@@ -80,3 +80,9 @@ shape = SubResource("RectangleShape2D_240pj")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("2_5kvca")]
 position = Vector2(290, 96)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("2_5kvca")]
+position = Vector2(550, 218)
+
+[node name="RigidBody2D3" parent="." instance=ExtResource("2_5kvca")]
+position = Vector2(899, 181)
