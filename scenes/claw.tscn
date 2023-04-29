@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/claw.gd" id="1_4wr3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
+size = Vector2(103, 18)
 
 [sub_resource type="BoxMesh" id="BoxMesh_621iv"]
 
@@ -24,15 +25,11 @@ node_a = NodePath("../Pivot")
 node_b = NodePath("../Claw")
 length = 100.0
 
-[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
-node_a = NodePath("../Pivot")
-node_b = NodePath("../Claw")
-length = 100.0
-
 [node name="Claw" type="RigidBody2D" parent="."]
 position = Vector2(0, 100)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Claw"]
+position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_6se6f")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Claw"]
@@ -40,15 +37,20 @@ scale = Vector2(103.998, -15.959)
 mesh = SubResource("BoxMesh_621iv")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Claw"]
+visible = false
 position = Vector2(-43, 19)
-rotation = 1.57243
-scale = Vector2(-54.8899, 17.8608)
+rotation = -1.56916
+scale = Vector2(54.8899, -17.8608)
 mesh = SubResource("BoxMesh_621iv")
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Claw"]
+visible = false
 position = Vector2(47, 19)
-rotation = 1.57243
-scale = Vector2(-54.8899, 17.8608)
+rotation = -1.56916
+scale = Vector2(54.8899, -17.8608)
 mesh = SubResource("BoxMesh_621iv")
+
+[node name="PickupPosition" type="Marker2D" parent="Claw"]
+position = Vector2(0, 10)
 
 [node name="Line2D" type="Line2D" parent="."]
