@@ -1,88 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://x6th45uv855v"]
+[gd_scene load_steps=6 format=3 uid="uid://f8ad8gl3epxr"]
 
+[ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
-[ext_resource type="Script" path="res://scripts/claw.gd" id="1_xmj6o"]
-[ext_resource type="PackedScene" uid="uid://dnp7imc6fc1x" path="res://scenes/mail.tscn" id="2_5kvca"]
+[ext_resource type="PackedScene" uid="uid://crlx1a11nnw4b" path="res://scenes/box prefabs/box_1.tscn" id="3_nl543"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
-size = Vector2(103, 18)
+[sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_621iv"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_uxaac"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_240pj"]
-size = Vector2(1943, 70)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53hwb"]
+size = Vector2(269, 4)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7ugy6")
 
-[node name="Claw" type="Node2D" parent="."]
-position = Vector2(53, 18)
-script = ExtResource("1_xmj6o")
-move_speed = 150
-
-[node name="Pivot" type="StaticBody2D" parent="Claw"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw/Pivot"]
-shape = SubResource("RectangleShape2D_6se6f")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Claw/Pivot"]
-scale = Vector2(20, 20)
-mesh = SubResource("BoxMesh_621iv")
-
-[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Claw"]
-node_a = NodePath("../Pivot")
-node_b = NodePath("../Claw")
-length = 100.0
-
-[node name="Claw" type="RigidBody2D" parent="Claw"]
-position = Vector2(0, 100)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw/Claw"]
-position = Vector2(-0.5, 3)
-shape = SubResource("RectangleShape2D_6se6f")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Claw/Claw"]
-scale = Vector2(103.998, -15.959)
-mesh = SubResource("BoxMesh_621iv")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="Claw/Claw"]
-visible = false
-position = Vector2(-43, 19)
-rotation = -1.56916
-scale = Vector2(54.8899, -17.8608)
-mesh = SubResource("BoxMesh_621iv")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="Claw/Claw"]
-visible = false
-position = Vector2(47, 19)
-rotation = -1.56916
-scale = Vector2(54.8899, -17.8608)
-mesh = SubResource("BoxMesh_621iv")
-
-[node name="PickupPosition" type="Marker2D" parent="Claw/Claw"]
-position = Vector2(0, 10)
-
-[node name="Line2D" type="Line2D" parent="Claw"]
+[node name="Claw" parent="." instance=ExtResource("1_2abi3")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 643)
+position = Vector2(0, 179)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
-position = Vector2(467, 0)
-scale = Vector2(1938.11, -69.129)
-mesh = SubResource("BoxMesh_uxaac")
+position = Vector2(134.75, -1.75)
+scale = Vector2(270.5, 4.5)
+mesh = SubResource("BoxMesh_p3rl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(469.5, 0)
-shape = SubResource("RectangleShape2D_240pj")
+position = Vector2(134.5, -2)
+shape = SubResource("RectangleShape2D_53hwb")
 
-[node name="RigidBody2D" parent="." instance=ExtResource("2_5kvca")]
-position = Vector2(290, 96)
-
-[node name="RigidBody2D2" parent="." instance=ExtResource("2_5kvca")]
-position = Vector2(550, 218)
-
-[node name="RigidBody2D3" parent="." instance=ExtResource("2_5kvca")]
-position = Vector2(899, 181)
+[node name="RigidBody2D" parent="." instance=ExtResource("3_nl543")]
+position = Vector2(82, 114)
