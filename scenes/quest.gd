@@ -7,6 +7,7 @@ var numberOfObjectsNeeded = 4
 
 @export var testSpawn:Node2D
 @export var testBox:PackedScene
+@export var box_shapes : Array[PackedScene]
 @export var questPrompt:PackedScene
 func _ready():
 	generateQuest()
@@ -47,13 +48,19 @@ func populateQuestUI(makeBoxes:bool=false):
 #			coveredChars.append(q)
 #	if makeBoxes:_makeTestBoxes()
 
-
-
-func _makeTestBoxes():
+func _makeTestBoxes(): #random boxes here
 	for g in Globals.currentQuests:
-
-		var box = testBox.instantiate()
-		box.name = g
-		box.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
-		box.set_position(testSpawn.position)
-		get_parent().add_child.call_deferred(box)
+		var _r = RandomNumberGenerator.new()
+		_r.randomize()
+		var _n = _r.randi_range(0, box_shapes.size() - 1)
+		
+		var _b = box_shapes[_n].instantiate()
+		_b.name = g
+		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
+		_b.set_position(testSpawn.position)
+		get_parent().add_child.call_deferred(_b)
+#		var box = testBox.instantiate()
+#		box.name = g
+#		box.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
+#		box.set_position(testSpawn.position)
+#		get_parent().add_child.call_deferred(box)
