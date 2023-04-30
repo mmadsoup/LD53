@@ -5,14 +5,20 @@ const validObjectCharacters ="123457890abcdefgjklmnopqrstuvwxyzBCDEFGHIJKLMNOPQR
 const maxDuplicates = 3 #maybe this will do something later if we need it, using count()
 var numberOfObjectsNeeded = 4
 
+@onready var charwindow = $ColorRect/Charwindow
 @export var testSpawn:Node2D
 @export var testBox:PackedScene
 @export var box_shapes : Array[PackedScene]
 @export var questPrompt:PackedScene
+
+var charpic_irritated = preload('res://assets/ui/charwindow-irritated.png')
+var charpic_neutral = preload('res://assets/ui/charwindow-neutral.png')
+var charpic_happy = preload('res://assets/ui/charwindow-happy.png')
+
 func _ready():
 	generateQuest()
-	
-
+	Globals.connect('change_charpic_irritated', change_charpic_irritated)
+	Globals.connect('change_charpic_happy', change_charpic_happy)
 func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
@@ -64,3 +70,13 @@ func _makeTestBoxes(): #random boxes here
 #		box.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
 #		box.set_position(testSpawn.position)
 #		get_parent().add_child.call_deferred(box)
+
+func change_charpic_irritated():
+	charwindow.texture = charpic_irritated
+	await get_tree().create_timer(1.0).timeout
+	charwindow.texture = charpic_neutral
+
+func change_charpic_happy():
+	charwindow.texture = charpic_happy
+	await get_tree().create_timer(1.0).timeout
+	charwindow.texture = charpic_neutral

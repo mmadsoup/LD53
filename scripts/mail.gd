@@ -7,8 +7,8 @@ func _on_area_2d_body_entered(body):
 	if str(body).split(":")[0] == "Claw" &&Globals.grab:
 		claw = body
 		Globals.grabbed_item = self
-
 		$Area2D.collision_layer = 4
+		#Globals.emit_signal('screen_shake')
 
 		#area_2d.queue_free()
 	if str(body).split(":")[0] == 'StaticBody2D':
@@ -20,3 +20,4 @@ func _release():
 	Globals.grab = false
 	await get_tree().create_timer(1.0).timeout
 	$Area2D.collision_layer = 1
+	
