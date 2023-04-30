@@ -42,9 +42,9 @@ texture = ExtResource("2_um4hw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 clip_children = 1
-offset_left = 225.0
+offset_left = 273.0
 offset_top = 2.0
-offset_right = 267.0
+offset_right = 315.0
 offset_bottom = 43.0
 
 [node name="Charwindow" type="Sprite2D" parent="ColorRect"]

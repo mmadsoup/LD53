@@ -12,7 +12,7 @@ func _ready():
 	line_2d.width = 1.0
 
 func _process(delta):
-	print (Globals.grabbed_item)
+	#print (Globals.grabbed_item)
 	line_2d.set_point_position(0, pivot.position)
 	line_2d.set_point_position(1, Vector2(claw.position.x, claw.position.y - 4))
 	

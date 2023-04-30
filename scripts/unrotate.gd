@@ -4,7 +4,7 @@ extends Sprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	print(self)
+	#print(self)
 	#if pops.name=="Claw" ||Globals.grabbed_item==pops:
 	rotation = -1* pops.rotation #this neutralizes all rotation
 	
