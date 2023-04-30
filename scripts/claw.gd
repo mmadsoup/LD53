@@ -27,7 +27,6 @@ func _process(delta):
 		if Globals.grabbed_item != null and Globals.grab:
 			Globals.grabbed_item._release()
 			#Globals.grabbed_item.apply_impulse(Vector2(0, 10), Vector2(Globals.grabbed_item.global_position.x, 530))
-
 		
 		if Globals.grab:
 			damped_spring_joint_2d.rest_length = 100

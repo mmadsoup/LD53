@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://d310558rukv6l"]
+
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_alot4"]
+[ext_resource type="FontFile" uid="uid://dvacb1s6hm6o8" path="res://assets/ui/Counting Apples (Black).fnt" id="2_s2665"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchor_right = 0.23
+anchor_bottom = 0.203
+offset_right = -73.6
+offset_bottom = -36.54
+script = ExtResource("1_alot4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 47.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.290196, 0.188235, 0.321569, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_s2665")
+text = "Timer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true

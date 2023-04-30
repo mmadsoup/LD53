@@ -10,6 +10,7 @@ var numberOfObjectsNeeded = 4
 @export var questPrompt:PackedScene
 func _ready():
 	generateQuest()
+	
 
 func generateQuest():
 	for left in numberOfObjectsNeeded:
