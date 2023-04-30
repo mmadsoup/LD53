@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvgv7mrfv8ro5"]
+
+[ext_resource type="Texture2D" uid="uid://dnv7pe40rfhfj" path="res://assets/ui/jobwindow.png" id="1_kn4km"]
+[ext_resource type="FontFile" uid="uid://drhr2kyqowqui" path="res://assets/ui/PixelOperatorHBSC.ttf" id="2_p87dy"]
+
+[node name="questPrompt" type="TextureRect"]
+anchors_preset = -1
+anchor_right = 0.144
+anchor_bottom = 0.128
+offset_right = 0.119999
+offset_bottom = -2.04
+texture = ExtResource("1_kn4km")
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 21.0
+theme_override_colors/default_color = Color(0.290196, 0.188235, 0.321569, 1)
+theme_override_fonts/normal_font = ExtResource("2_p87dy")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "1[font_size=13][font=res://assets/ui/Pixel Icons Compilation.ttf]J[/font][/font_size]"
+scroll_active = false
+autowrap_mode = 0

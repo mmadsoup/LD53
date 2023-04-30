@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhwcga0cvyxmm"]
 
-[ext_resource type="FontFile" path="res://assets/ui/Counting Apples (Black).fnt" id="1_yophj"]
+[ext_resource type="FontFile" uid="uid://dvacb1s6hm6o8" path="res://assets/ui/Counting Apples (Black).fnt" id="1_yophj"]
 
 [node name="mainmenu" type="Node2D"]
 

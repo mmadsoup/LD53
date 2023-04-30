@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2s5jcjicvvqs"]
+[gd_scene load_steps=5 format=3 uid="uid://d2s5jcjicvvqs"]
 
-[ext_resource type="PackedScene" path="res://scenes/goal.tscn" id="1_qbgqr"]
-[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="2_mcpgx"]
-[ext_resource type="PackedScene" path="res://scenes/selkieBox.tscn" id="2_tmlbp"]
+[ext_resource type="PackedScene" uid="uid://i04iweywhtkk" path="res://scenes/goal.tscn" id="1_qbgqr"]
+[ext_resource type="PackedScene" uid="uid://xxtv1q54jf52" path="res://scenes/ui.tscn" id="2_mcpgx"]
+[ext_resource type="PackedScene" uid="uid://crlx1a11nnw4b" path="res://scenes/box prefabs/box_1.tscn" id="3_t0mhg"]
+[ext_resource type="PackedScene" uid="uid://dvgv7mrfv8ro5" path="res://assets/ui/scenes/quest_prompt.tscn" id="4_ixdeu"]
 
 [node name="selkietest" type="Node2D"]
 
 [node name="goal" parent="." instance=ExtResource("1_qbgqr")]
-position = Vector2(271, 635)
+position = Vector2(62, 178)
+scale = Vector2(0.226315, 0.226315)
 
 [node name="UI" parent="." node_paths=PackedStringArray("testSpawn") instance=ExtResource("2_mcpgx")]
 testSpawn = NodePath("../testspawn")
-testBox = ExtResource("2_tmlbp")
+testBox = ExtResource("3_t0mhg")
+questPrompt = ExtResource("4_ixdeu")
 
 [node name="testspawn" type="Node2D" parent="."]
-position = Vector2(344, 137)
+position = Vector2(189, 56)

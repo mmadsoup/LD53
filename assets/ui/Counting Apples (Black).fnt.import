@@ -1,0 +1,16 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://dvacb1s6hm6o8"
+path="res://.godot/imported/Counting Apples (Black).fnt-55752007f702efc61cde9aa91b0babad.fontdata"
+
+[deps]
+
+source_file="res://assets/ui/Counting Apples (Black).fnt"
+dest_files=["res://.godot/imported/Counting Apples (Black).fnt-55752007f702efc61cde9aa91b0babad.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true

@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://x6th45uv855v"]
+[gd_scene load_steps=13 format=3 uid="uid://x6th45uv855v"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
 [ext_resource type="PackedScene" uid="uid://crlx1a11nnw4b" path="res://scenes/box prefabs/box_1.tscn" id="3_nl543"]
+[ext_resource type="Texture2D" uid="uid://612i4tk6u5px" path="res://assets/bg/bg1.png" id="4_42amj"]
+[ext_resource type="Texture2D" uid="uid://cvw7gdj3hldfd" path="res://assets/bg/bg2.png" id="4_t170p"]
+[ext_resource type="Texture2D" uid="uid://d3gvnf16euk5" path="res://assets/bg/bg4.png" id="5_ysvt5"]
+[ext_resource type="Texture2D" uid="uid://di3lbuhknthtl" path="res://assets/bg/bg3.png" id="6_eoca2"]
+[ext_resource type="PackedScene" uid="uid://i04iweywhtkk" path="res://scenes/goal.tscn" id="8_6d55c"]
+[ext_resource type="PackedScene" uid="uid://xxtv1q54jf52" path="res://scenes/ui.tscn" id="9_ylmwa"]
+[ext_resource type="PackedScene" uid="uid://dvgv7mrfv8ro5" path="res://assets/ui/scenes/quest_prompt.tscn" id="10_tw4pb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53hwb"]
-size = Vector2(269, 4)
+size = Vector2(380, 63)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7ugy6")
@@ -15,19 +22,65 @@ script = ExtResource("1_7ugy6")
 [node name="Claw" parent="." instance=ExtResource("1_2abi3")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, 179)
+position = Vector2(3, 169)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
-position = Vector2(134.75, -1.75)
-scale = Vector2(270.5, 4.5)
+position = Vector2(189.25, 2.5)
+scale = Vector2(379.5, 13)
 mesh = SubResource("BoxMesh_p3rl5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(134.5, -2)
+position = Vector2(190, 27.5)
 shape = SubResource("RectangleShape2D_53hwb")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_nl543")]
 position = Vector2(82, 114)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(135, 90)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("4_42amj")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("5_ysvt5")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("6_eoca2")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(270, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-24, 20)
+texture = ExtResource("4_t170p")
+centered = false
+
+[node name="goal" parent="." instance=ExtResource("8_6d55c")]
+position = Vector2(-102, 178)
+scale = Vector2(0.413, 0.413)
+
+[node name="UI" parent="." node_paths=PackedStringArray("testSpawn") instance=ExtResource("9_ylmwa")]
+testSpawn = NodePath("../testspawn")
+testBox = ExtResource("3_nl543")
+questPrompt = ExtResource("10_tw4pb")
+
+[node name="testspawn" type="Node2D" parent="."]
+position = Vector2(189, -40)

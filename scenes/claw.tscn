@@ -23,6 +23,13 @@ shape = SubResource("RectangleShape2D_6se6f")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Pivot"]
 mesh = SubResource("BoxMesh_621iv")
 
+[node name="Camera2D" type="Camera2D" parent="Pivot"]
+position = Vector2(58, 90)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+rotation_smoothing_enabled = true
+
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Pivot")
 node_b = NodePath("../Claw")
@@ -51,6 +58,10 @@ mesh = SubResource("BoxMesh_621iv")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_awek7")
 script = ExtResource("3_w8sm3")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Claw/Sprite2D"]
+position = Vector2(0, 34.2857)
+scale = Vector2(1.42857, 1.42857)
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Claw"]
 visible = false

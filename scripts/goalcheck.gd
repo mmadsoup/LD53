@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var ui = get_node("/root/selkietest/UI")
+@onready var ui = get_node("/root/Game/UI")
 
 func _on_area_2d_body_entered(body):
 
