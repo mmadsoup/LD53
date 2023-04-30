@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjiqxalte7q2t"]
+[gd_scene load_steps=6 format=3 uid="uid://bjiqxalte7q2t"]
 
 [ext_resource type="Script" path="res://scripts/claw.gd" id="1_4wr3e"]
 [ext_resource type="Texture2D" uid="uid://cklkhr2m76rhe" path="res://sprites/magnet.png" id="2_awek7"]
+[ext_resource type="Script" path="res://scripts/unrotate.gd" id="3_w8sm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
 size = Vector2(21, 15)
@@ -49,6 +50,7 @@ mesh = SubResource("BoxMesh_621iv")
 [node name="Sprite2D" type="Sprite2D" parent="Claw"]
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_awek7")
+script = ExtResource("3_w8sm3")
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="Claw"]
 visible = false

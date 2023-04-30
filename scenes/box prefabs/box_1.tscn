@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://crlx1a11nnw4b"]
+[gd_scene load_steps=6 format=3 uid="uid://crlx1a11nnw4b"]
 
 [ext_resource type="Script" path="res://scripts/mail.gd" id="1_ibn5o"]
 [ext_resource type="Texture2D" uid="uid://c1ht8bhmuw8pm" path="res://sprites/box-4.png" id="2_bsx67"]
+[ext_resource type="Script" path="res://scripts/unrotate.gd" id="3_08i42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji4jl"]
 size = Vector2(35, 30)
@@ -16,6 +17,7 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_bsx67")
+script = ExtResource("3_08i42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

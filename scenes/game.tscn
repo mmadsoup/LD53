@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://f8ad8gl3epxr"]
+[gd_scene load_steps=6 format=3 uid="uid://x6th45uv855v"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -28,3 +28,6 @@ shape = SubResource("RectangleShape2D_53hwb")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_nl543")]
 position = Vector2(82, 114)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(135, 90)
