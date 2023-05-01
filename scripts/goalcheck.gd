@@ -47,6 +47,7 @@ func _on_area_2d_body_entered(body):
 	else:
 		Globals.emit_signal('change_charpic_irritated')
 		Globals.emit_signal('play_incorrect_sound')
+		Globals.emit_signal('screen_shake')
 	body.collision_layer = 3
 	#get_tree().root.add_child(_d)
 	

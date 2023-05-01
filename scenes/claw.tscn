@@ -13,7 +13,7 @@ size = Vector2(21, 15)
 [sub_resource type="BoxMesh" id="BoxMesh_621iv"]
 
 [sub_resource type="Curve" id="Curve_afgc1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.445455), 0.0, 0.0, 0, 0, Vector2(0.21134, 0.0181818), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ssonk"]
