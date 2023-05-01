@@ -12,11 +12,10 @@ func _ready():
 
 func checkVictory():
 	#print(Globals.fulfilled)
-	var a = Globals.currentQuests.duplicate() #itll sort the main array if we dont do it like this
+	var a = Globals.currentQuestNames.duplicate() #itll sort the main array if we dont do it like this
 	a.sort()
 	var b = Globals.fulfilled.duplicate()
 	b.sort()
-
 	if a.hash()==b.hash():
 		victory()
 	Globals.score+=Globals.scoreMultiplier*Globals.fulfilled.size()
@@ -37,9 +36,9 @@ func change_collision_layer():
 
 func _on_area_2d_body_entered(body):
 	if str(body.name) in exclude or Globals.fulfilled.has(body.name): return
-	Globals.fulfilled.append(str(body.name))
 	if Globals.currentQuestNames.has(body.name):
 		#Globals.currentQuests.erase(body.name)
+		Globals.fulfilled.append(str(body.name))
 		Globals.emit_signal('play_correct_sound')
 		Globals.emit_signal('change_charpic_happy')
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho

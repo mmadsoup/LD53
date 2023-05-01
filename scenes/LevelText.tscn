@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbqqljymhosw"]
+
+[ext_resource type="FontFile" uid="uid://dhw2nhl2au2sw" path="res://assets/ui/upheavtt.ttf" id="1_mokqj"]
+
+[node name="Label" type="Label"]
+offset_left = 351.0
+offset_top = 76.0
+offset_right = 495.999
+offset_bottom = 144.0
+theme_override_colors/font_shadow_color = Color(0.182679, 0.141681, 0.29347, 1)
+theme_override_colors/font_outline_color = Color(1, 0.329412, 0.439216, 1)
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("1_mokqj")
+theme_override_font_sizes/font_size = 32
+text = "lvl 2"

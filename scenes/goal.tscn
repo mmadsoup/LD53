@@ -87,6 +87,8 @@ libraries = {
 }
 
 [node name="TruckColliders" type="StaticBody2D" parent="."]
+collision_layer = 63
+collision_mask = 63
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TruckColliders"]
 position = Vector2(116, -38)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bthqqxb10y0a0"]
 
 [ext_resource type="Shader" path="res://material_shader/transition.gdshader" id="1_0bmq7"]
-[ext_resource type="FontFile" uid="uid://dhw2nhl2au2sw" path="res://assets/ui/upheavtt.ttf" id="2_2lofk"]
+[ext_resource type="PackedScene" uid="uid://dqbqqljymhosw" path="res://scenes/LevelText.tscn" id="2_o7n3i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_421cj"]
 shader = ExtResource("1_0bmq7")
-shader_parameter/num_lines = 20.0
+shader_parameter/num_lines = 5.0
 shader_parameter/y_threshold = 0.0
 shader_parameter/line_color_a = Color(0, 0.737255, 0.666667, 1)
 shader_parameter/line_color_b = Color(0.172549, 0.435294, 0.6, 1)
@@ -105,18 +105,9 @@ offset_right = 471.0
 offset_bottom = 197.0
 rotation = 0.443556
 
-[node name="Label" type="Label" parent="."]
-offset_left = 351.0
-offset_top = 76.0
-offset_right = 495.999
-offset_bottom = 144.0
-theme_override_colors/font_shadow_color = Color(0.182679, 0.141681, 0.29347, 1)
-theme_override_colors/font_outline_color = Color(1, 0.329412, 0.439216, 1)
-theme_override_constants/outline_size = 7
-theme_override_constants/shadow_outline_size = 10
-theme_override_fonts/font = ExtResource("2_2lofk")
-theme_override_font_sizes/font_size = 32
-text = "lvl 2"
+[node name="Label" parent="." instance=ExtResource("2_o7n3i")]
+offset_left = -152.0
+offset_right = -7.00101
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

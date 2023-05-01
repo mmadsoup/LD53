@@ -97,6 +97,12 @@ _data = {
 
 [node name="screenTransition" type="CanvasLayer"]
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 327.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_421cj")
 offset_left = 72.0
@@ -112,4 +118,4 @@ libraries = {
 }
 script = ExtResource("2_qgaak")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished" flags=18]
