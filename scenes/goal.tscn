@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ssinsms0h5s2" path="res://assets/cautionstripe.png" id="3_ik5ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s52f"]
-size = Vector2(344, 84.5)
+size = Vector2(329, 84.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7cw8"]
 shader = ExtResource("2_a1hpg")
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-134, -74)]
+"values": [Vector2(41, -74)]
 }
 
 [sub_resource type="Animation" id="Animation_k0d6k"]
@@ -57,19 +57,20 @@ script = ExtResource("1_faqd6")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(79, -43.75)
+position = Vector2(71.5, -57)
 shape = SubResource("RectangleShape2D_1s52f")
 
 [node name="DeliveryTruck" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t7cw8")
-position = Vector2(-134, -74)
-scale = Vector2(3, 3)
+position = Vector2(41, -74)
+scale = Vector2(4, 4)
 texture = ExtResource("2_s0j7g")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="DeliveryTruck"]
 occluder = SubResource("OccluderPolygon2D_7jbq1")
 
 [node name="Cautionstripe" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(125, -15)
 texture = ExtResource("3_ik5ve")
 
