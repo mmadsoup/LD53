@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 const validObjectCharacters ="123457890abcdefgjklmnopqrstuvwxyzBCDEFGHIJKLMNOPQRSTUVWXYZ"
-
+const validColors=["ff5470","7fceff","ff9b71","00bcaa"]
  #"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 const maxDuplicates = 3 #maybe this will do something later if we need it, using count()
 var numberOfObjectsNeeded = 4
@@ -15,7 +15,8 @@ var totalboxes = 30  #increase to up difficulty?
 #var charpic_irritated = preload('res://assets/ui/charwindow-irritated.png')
 #var charpic_neutral = preload('res://assets/ui/charwindow-neutral.png')
 #var charpic_happy = preload('res://assets/ui/charwindow-happy.png')
-
+func randomColor():
+	return validColors[randi_range(0,validColors.size()-1)]
 func _ready():
 	generateQuest()
 	Globals.connect('change_charpic_irritated', change_charpic_irritated)
@@ -23,7 +24,7 @@ func _ready():
 func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
-		Globals.currentQuests.append(obj)
+		Globals.currentQuests.append([obj,randomColor()])
 	populateQuestUI(true)
 func randomLetter():
 	var l = validObjectCharacters[randi_range(0,validObjectCharacters.length()-1)]
@@ -34,14 +35,14 @@ func populateQuestUI(makeBoxes:bool=false):
 		x.queue_free()
 	var coveredChars = [] # i dont like this but whatever
 	for q in Globals.currentQuests:
-		if q not in coveredChars:
-			if q in Globals.fulfilled:
+		if q[0] not in coveredChars:
+			if q[0] in Globals.fulfilled:
 				pass
 			else:
 				var n = questPrompt.instantiate()
-				n.get_child(0).text=str(Globals.currentQuests.count(q))+"[font_size=13][color=#ff5470][outline_size=4][font=res://assets/ui/Pixel Icons Compilation.ttf]"+q+"[/font][/outline_size][/color][/font_size]"
+				n.get_child(0).text=str(Globals.currentQuests.count(q))+"[font_size=13][color=#"+q[1]+"][outline_size=4][font=res://assets/ui/Pixel Icons Compilation.ttf]"+q[0]+"[/font][/outline_size][/color][/font_size]"
 				$VBoxContainer.add_child(n)
-			coveredChars.append(q)
+			coveredChars.append(q[0])
 	if makeBoxes:_makeTestBoxes()
 #func populateQuestUI(makeBoxes:bool=false):
 #	$label_needs/quests.text=''
@@ -65,12 +66,13 @@ func _makeTestBoxes(): #random boxes here
 		var _n = _r.randi_range(0, box_shapes.size() - 1)
 		
 		var _b = box_shapes[_n].instantiate()
-		_b.name = g
-		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
+		_b.name = g[0]
+		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g[0]
+		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").add_theme_color_override("font_color",g[1])
 		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
 		get_parent().add_child.call_deferred(_b)
-		if leftOverChars.contains(g):
-			leftOverChars.replace(g,'')
+		if leftOverChars.contains(g[0]):
+			leftOverChars.replace(g[0],'')
 	for b in boxestomake:
 		var _r = RandomNumberGenerator.new()
 		_r.randomize()
@@ -81,6 +83,7 @@ func _makeTestBoxes(): #random boxes here
 		var _b = box_shapes[_n].instantiate()
 		_b.name = fakename
 		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = fakename
+		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").add_theme_color_override("font_color",randomColor())
 		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
 		get_parent().add_child.call_deferred(_b)
 #		var box = testBox.instantiate()
