@@ -18,7 +18,7 @@ func _on_area_2d_body_entered(body):
 			Globals.emit_signal('change_charpic_irritated')
 		
 func checkVictory():
-	print(Globals.fulfilled)
+	#print(Globals.fulfilled)
 	var a = Globals.currentQuests.duplicate() #itll sort the main array if we dont do it like this
 	a.sort()
 	var b = Globals.fulfilled.duplicate()
@@ -40,8 +40,6 @@ func _on_area_2d_body_exited(body):
 func change_collision_layer():
 	if Globals.grabbed_item == null and not Globals.grab:
 		area_2d.collision_mask = 1
-		print(area_2d.collision_layer)
 	else:
-		# change collision layer back to register boxes
-		print(area_2d.collision_layer)
 		area_2d.collision_mask = 6
+

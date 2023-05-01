@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://i04iweywhtkk"]
+[gd_scene load_steps=14 format=3 uid="uid://i04iweywhtkk"]
 
 [ext_resource type="Script" path="res://scripts/goalcheck.gd" id="1_faqd6"]
 [ext_resource type="Shader" path="res://material_shader/vibrate.gdshader" id="2_a1hpg"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ssinsms0h5s2" path="res://assets/cautionstripe.png" id="3_ik5ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s52f"]
-size = Vector2(446, 316)
+size = Vector2(530, 528)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7cw8"]
 shader = ExtResource("2_a1hpg")
@@ -18,7 +18,10 @@ polygon = PackedVector2Array(-32, -20.3333, -49.3333, -4.66667, -49.6667, 18.666
 size = Vector2(356, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hhpv"]
-size = Vector2(281, 232)
+size = Vector2(270, 239)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0lje"]
+size = Vector2(55, 480)
 
 [sub_resource type="Animation" id="Animation_ov7yx"]
 length = 0.001
@@ -64,7 +67,7 @@ script = ExtResource("1_faqd6")
 position = Vector2(-131, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(107, -249)
+position = Vector2(65, -355)
 shape = SubResource("RectangleShape2D_1s52f")
 
 [node name="DeliveryTruck" type="Sprite2D" parent="."]
@@ -89,8 +92,12 @@ position = Vector2(168, -46)
 shape = SubResource("RectangleShape2D_hnq36")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TruckColliders"]
-position = Vector2(-108.5, -115)
+position = Vector2(-114, -118.5)
 shape = SubResource("RectangleShape2D_6hhpv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TruckColliders"]
+position = Vector2(-225.5, -250)
+shape = SubResource("RectangleShape2D_w0lje")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.5
@@ -100,3 +107,4 @@ libraries = {
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
