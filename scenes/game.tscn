@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=29 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -37,8 +37,11 @@ glow_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 1.1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llua5"]
+size = Vector2(9, 172.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2if41"]
-size = Vector2(6, 52)
+size = Vector2(119, 12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_421cj"]
 shader = ExtResource("15_su2wv")
@@ -290,12 +293,22 @@ position = Vector2(458, 74)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k8uei")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="WorldEnvironment"]
+[node name="TruckColliderFront" type="StaticBody2D" parent="WorldEnvironment"]
+position = Vector2(6, 145)
+collision_layer = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldEnvironment/TruckColliderFront"]
+position = Vector2(-176.5, -54.75)
+shape = SubResource("RectangleShape2D_llua5")
+
+[node name="TruckColliderBack" type="StaticBody2D" parent="WorldEnvironment"]
 position = Vector2(6, 145)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEnvironment/StaticBody2D"]
-position = Vector2(-7, 16)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEnvironment/TruckColliderBack"]
+position = Vector2(0, -41.5)
+rotation = -1.5708
 shape = SubResource("RectangleShape2D_2if41")
+one_way_collision = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.4
