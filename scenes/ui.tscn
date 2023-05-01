@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xxtv1q54jf52"]
+[gd_scene load_steps=18 format=3 uid="uid://xxtv1q54jf52"]
 
 [ext_resource type="Script" path="res://scenes/quest.gd" id="1_6yd5a"]
 [ext_resource type="PackedScene" path="res://scenes/label_needs.tscn" id="2_8q8yc"]
@@ -9,7 +9,11 @@
 [ext_resource type="Shader" path="res://material_shader/outlineThatDisrespectsBoundaries.gdshader" id="5_hu7lq"]
 [ext_resource type="Shader" path="res://material_shader/cautionstripe.gdshader" id="5_qv137"]
 [ext_resource type="PackedScene" uid="uid://d310558rukv6l" path="res://scenes/timer.tscn" id="6_nnecd"]
+[ext_resource type="Texture2D" uid="uid://hje4yln8udm6" path="res://assets/ui/charwindow-happy.png" id="7_63vyg"]
+[ext_resource type="Texture2D" uid="uid://blpi7rxux0546" path="res://assets/ui/charwindow-neutral-blink1.png" id="8_np5u3"]
 [ext_resource type="Texture2D" uid="uid://ckq3j1s7vg6si" path="res://assets/ui/charwindow.png" id="8_pi8xr"]
+[ext_resource type="Texture2D" uid="uid://bols1lfs7cwgd" path="res://assets/ui/charwindow-irritated.png" id="8_y5pcg"]
+[ext_resource type="Texture2D" uid="uid://gl8ah03xl5eu" path="res://assets/ui/charwindow-neutral-blink2.png" id="9_rlwbw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00bxq"]
 shader = ExtResource("5_qv137")
@@ -27,6 +31,42 @@ shader_parameter/width = 1.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_re8n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_63vyg")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_y5pcg")
+}],
+"loop": true,
+"name": &"irritated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 40.0,
+"texture": ExtResource("4_jgcse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_np5u3")
+}, {
+"duration": 2.0,
+"texture": ExtResource("9_rlwbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_np5u3")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 12.0
+}]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_6yd5a")
@@ -66,10 +106,11 @@ offset_top = 29.0
 offset_right = 72.0
 offset_bottom = 73.0
 
-[node name="Charwindow" type="Sprite2D" parent="ColorRect"]
+[node name="Charwindow" type="AnimatedSprite2D" parent="ColorRect"]
 material = SubResource("ShaderMaterial_i632v")
 position = Vector2(51, 50)
-texture = ExtResource("4_jgcse")
+sprite_frames = SubResource("SpriteFrames_re8n6")
+animation = &"neutral"
 
 [node name="Charwindow2" type="Sprite2D" parent="."]
 position = Vector2(295, 24)

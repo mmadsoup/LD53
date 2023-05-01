@@ -10,10 +10,10 @@ var numberOfObjectsNeeded = 4
 @export var testBox:PackedScene
 @export var box_shapes : Array[PackedScene]
 @export var questPrompt:PackedScene
-
-var charpic_irritated = preload('res://assets/ui/charwindow-irritated.png')
-var charpic_neutral = preload('res://assets/ui/charwindow-neutral.png')
-var charpic_happy = preload('res://assets/ui/charwindow-happy.png')
+#
+#var charpic_irritated = preload('res://assets/ui/charwindow-irritated.png')
+#var charpic_neutral = preload('res://assets/ui/charwindow-neutral.png')
+#var charpic_happy = preload('res://assets/ui/charwindow-happy.png')
 
 func _ready():
 	generateQuest()
@@ -72,11 +72,14 @@ func _makeTestBoxes(): #random boxes here
 #		get_parent().add_child.call_deferred(box)
 
 func change_charpic_irritated():
-	charwindow.texture = charpic_irritated
+	charwindow.play("irritated")
+	#charwindow.texture = charpic_irritated
 	await get_tree().create_timer(1.0).timeout
-	charwindow.texture = charpic_neutral
-
+	#charwindow.texture = charpic_neutral
+	charwindow.play("neutral")
 func change_charpic_happy():
-	charwindow.texture = charpic_happy
+	#charwindow.texture = charpic_happy
+	charwindow.play("happy")
 	await get_tree().create_timer(1.0).timeout
-	charwindow.texture = charpic_neutral
+	#charwindow.texture = charpic_neutral
+	charwindow.play("neutral")
