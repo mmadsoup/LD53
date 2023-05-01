@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://g0w2p08xtqnf"]
+[gd_scene load_steps=10 format=3 uid="uid://g0w2p08xtqnf"]
 
 [ext_resource type="PackedScene" uid="uid://dofk0afs51iyi" path="res://scenes/fade_transition.tscn" id="1_qaubb"]
 [ext_resource type="PackedScene" uid="uid://bmri40inyvtam" path="res://scenes/scene_transition.tscn" id="1_st3fp"]
 [ext_resource type="PackedScene" uid="uid://c7w6kcskt1wkh" path="res://scenes/label_needs.tscn" id="2_oces0"]
-[ext_resource type="FontFile" uid="uid://jpyybd51fkk3" path="res://assets/ui/Litebulb 8-bit.ttf" id="3_ijqol"]
+[ext_resource type="Shader" path="res://material_shader/scroll.gdshader" id="3_0joax"]
+[ext_resource type="Texture2D" uid="uid://dbu8icfff0hwj" path="res://assets/main_menu/bg.jpg" id="4_xnkwk"]
+[ext_resource type="PackedScene" uid="uid://dqbqqljymhosw" path="res://scenes/LevelText.tscn" id="5_b1yka"]
+[ext_resource type="FontFile" uid="uid://c66n0un1xr4yd" path="res://assets/ui/deltarune.ttf" id="7_svmrb"]
 
 [sub_resource type="GDScript" id="GDScript_yq04y"]
 script/source = "extends Control
@@ -16,6 +19,12 @@ func _on_button_pressed():
 func _on_button_2_pressed():
 	Globals.emit_signal('play_scene_transition', 'res://scenes/main_menu.tscn')
 "
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_snkb5"]
+shader = ExtResource("3_0joax")
+shader_parameter/motion = Vector2(15, 15)
+shader_parameter/scale = 1.0
+shader_parameter/offset = Vector2(0, 0)
 
 [node name="HowToPlay" type="Control"]
 layout_mode = 3
@@ -30,14 +39,31 @@ script = SubResource("GDScript_yq04y")
 
 [node name="screenTransition" parent="." instance=ExtResource("1_st3fp")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_snkb5")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.133333, 0.14902, 0.180392, 1)
+texture = ExtResource("4_xnkwk")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -82.0
+offset_right = 136.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,17 +72,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -75.5
-offset_right = 75.0
-offset_bottom = 75.5
+offset_left = -78.0
+offset_top = -67.5
+offset_right = 78.0
+offset_bottom = 83.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Label" parent="VBoxContainer" instance=ExtResource("5_b1yka")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "How to play"
 
 [node name="label_needs" parent="VBoxContainer" instance=ExtResource("2_oces0")]
 layout_mode = 2
-text = "How to play
-Left / Right Arrows -> Move claw
+text = "Left / Right Arrows -> Move claw
 Down Arrow -> Steady claw
 Space -> Grab / Release"
 horizontal_alignment = 1
@@ -68,12 +99,12 @@ alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ijqol")
+theme_override_fonts/font = ExtResource("7_svmrb")
 text = "Play"
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_ijqol")
+theme_override_fonts/font = ExtResource("7_svmrb")
 text = "Back to menu"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
