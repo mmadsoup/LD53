@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://pfwawo7mlx23"]
+
+[ext_resource type="PackedScene" uid="uid://c7w6kcskt1wkh" path="res://scenes/label_needs.tscn" id="1_lok7f"]
+[ext_resource type="FontFile" uid="uid://jpyybd51fkk3" path="res://assets/ui/Litebulb 8-bit.ttf" id="2_dhf6u"]
+
+[sub_resource type="GDScript" id="GDScript_ajl2f"]
+script/source = "extends Control
+
+
+func _on_start_pressed():
+	get_tree().change_scene_to_file('res://scenes/game.tscn')
+
+func _on_how_to_play_pressed():
+	get_tree().change_scene_to_file('res://scenes/how_to_play.tscn')
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ajl2f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.14902, 0.180392, 1)
+
+[node name="label_needs" parent="." instance=ExtResource("1_lok7f")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -36.0
+offset_right = 38.5
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Logisticlaw"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -10.0
+offset_right = 26.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dhf6u")
+text = "start"
+
+[node name="HowToPlay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_dhf6u")
+text = "How to play"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
