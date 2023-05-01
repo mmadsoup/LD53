@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=28 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dvgv7mrfv8ro5" path="res://assets/ui/scenes/quest_prompt.tscn" id="10_tw4pb"]
 [ext_resource type="PackedScene" uid="uid://bhgygv4hf4vb0" path="res://scenes/box prefabs/box_2.tscn" id="10_ydr0f"]
 [ext_resource type="PackedScene" uid="uid://b1f84hiamm1sx" path="res://scenes/box prefabs/box_3.tscn" id="11_qnfxf"]
+[ext_resource type="Shader" path="res://material_shader/transition.gdshader" id="15_su2wv"]
+[ext_resource type="FontFile" path="res://assets/ui/upheavtt.ttf" id="16_087nl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
@@ -36,7 +38,96 @@ adjustment_enabled = true
 adjustment_saturation = 1.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2if41"]
-size = Vector2(296, 20)
+size = Vector2(6, 52)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_421cj"]
+render_priority = 0
+shader = ExtResource("15_su2wv")
+
+[sub_resource type="Animation" id="Animation_by0v3"]
+resource_name = "LevelTransition"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-152, 76), Vector2(99, 76), Vector2(138, 76), Vector2(351, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/y_threshold")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/num_lines")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 20.0]
+}
+
+[sub_resource type="Animation" id="Animation_3wtbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-152, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/y_threshold")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/num_lines")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_df1cy"]
+_data = {
+"LevelTransition": SubResource("Animation_by0v3"),
+"RESET": SubResource("Animation_3wtbm")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7ugy6")
@@ -196,16 +287,42 @@ position = Vector2(458, 74)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k8uei")
 
-[node name="TruckCollider" type="StaticBody2D" parent="WorldEnvironment"]
+[node name="StaticBody2D" type="StaticBody2D" parent="WorldEnvironment"]
 position = Vector2(6, 145)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEnvironment/TruckCollider"]
-position = Vector2(-8.99992, -125)
-rotation = -1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldEnvironment/StaticBody2D"]
+position = Vector2(-7, 16)
 shape = SubResource("RectangleShape2D_2if41")
-one_way_collision = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.4
 shadow_enabled = true
 height = 1.0
+
+[node name="screenTransition" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="screenTransition"]
+material = SubResource("ShaderMaterial_421cj")
+offset_left = 72.0
+offset_top = -151.0
+offset_right = 471.0
+offset_bottom = 197.0
+rotation = 0.443556
+
+[node name="Label" type="Label" parent="screenTransition"]
+offset_left = -152.0
+offset_top = 76.0
+offset_right = -7.0004
+offset_bottom = 144.0
+theme_override_colors/font_shadow_color = Color(0.182679, 0.141681, 0.29347, 1)
+theme_override_colors/font_outline_color = Color(1, 0.329412, 0.439216, 1)
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("16_087nl")
+theme_override_font_sizes/font_size = 32
+text = "lvl 2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="screenTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_df1cy")
+}
