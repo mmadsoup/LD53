@@ -25,6 +25,7 @@ func _ready():
 	Globals.connect('change_charpic_irritated', change_charpic_irritated)
 	Globals.connect('change_charpic_happy', change_charpic_happy)
 	highlight_quest_boxes()
+	Globals.connect('spawn_boxes', _makeTestBoxes)
 	
 func generateQuest():
 	for left in numberOfObjectsNeeded:

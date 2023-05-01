@@ -27,6 +27,14 @@ func victory():
 	Globals.level+=1
 	transition.find_child("Label").text="Level"+str(Globals.level)
 	transition.find_child("AnimationPlayer").play("LevelTransition")
+	await get_tree().create_timer(0.2).timeout
+	$AnimationPlayer.play("RESET")
+	Globals.emit_signal('spawn_boxes')
+	
+	if Globals.quest_boxes:
+		for b in Globals.quest_boxes:
+			b.queue_free()
+	
 	#reset level now
 
 func change_collision_layer():

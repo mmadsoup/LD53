@@ -16,6 +16,8 @@ signal play_scene_transition
 signal play_fade_in_transition
 signal play_fade_out_transition
 
+signal spawn_boxes
+
 var currentQuests = []
 var currentQuestNames = []
 var fulfilled = []
