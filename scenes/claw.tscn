@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjiqxalte7q2t"]
+[gd_scene load_steps=9 format=3 uid="uid://bjiqxalte7q2t"]
 
 [ext_resource type="Script" path="res://scripts/claw.gd" id="1_4wr3e"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_alu1d"]
 [ext_resource type="Texture2D" uid="uid://cklkhr2m76rhe" path="res://sprites/magnet.png" id="2_awek7"]
+[ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_kyynj"]
 [ext_resource type="Script" path="res://scripts/unrotate.gd" id="3_w8sm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
 size = Vector2(21, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_621iv"]
+
+[sub_resource type="Curve" id="Curve_afgc1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Claw" type="Node2D"]
 script = ExtResource("1_4wr3e")
@@ -23,12 +29,22 @@ shape = SubResource("RectangleShape2D_6se6f")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Pivot"]
 mesh = SubResource("BoxMesh_621iv")
 
+[node name="Shaker" type="Node" parent="Pivot" node_paths=PackedStringArray("target_node")]
+script = ExtResource("2_kyynj")
+target_node = NodePath("../Camera2D")
+target_property = &"offset"
+min_value = -1.0
+max_value = 1.0
+duration = 1.0
+fall_off = SubResource("Curve_afgc1")
+
 [node name="Camera2D" type="Camera2D" parent="Pivot"]
 position = Vector2(58, 90)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 rotation_smoothing_enabled = true
+script = ExtResource("2_alu1d")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Pivot")
