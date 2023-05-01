@@ -5,7 +5,6 @@ extends Node2D
 @onready var transition = get_node("/root/Game/screenTransition")
 
 var exclude = ['Claw', 'StaticBody2D', 'Pivot', 'TruckColliders'] # don't detect these bodies
-var in_dropoff_area = false
 
 func _ready():
 	Globals.connect('change_truck_area_collision_layer', change_collision_layer)
@@ -38,24 +37,22 @@ func change_collision_layer():
 
 func _on_area_2d_body_entered(body):
 	if str(body.name) in exclude or Globals.fulfilled.has(body.name): return
-	in_dropoff_area = true
 	Globals.fulfilled.append(str(body.name))
-	print(Globals.currentQuestNames)
-	print('body: %s' % body.name)
 	if Globals.currentQuestNames.has(body.name):
 		#Globals.currentQuests.erase(body.name)
+		Globals.emit_signal('play_correct_sound')
+		Globals.emit_signal('change_charpic_happy')
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
 		checkVictory()
-		#Globals.emit_signal('play_correct_sound')
-		Globals.emit_signal('change_charpic_happy')
 	else:
 		Globals.emit_signal('change_charpic_irritated')
-		#Globals.emit_signal('play_incorrect_sound')
-
+		Globals.emit_signal('play_incorrect_sound')
+	body.collision_layer = 3
+	#get_tree().root.add_child(_d)
+	
 
 func _on_area_2d_body_exited(body):
 	Globals.fulfilled.erase(str(body.name))
-	in_dropoff_area = false
 	if Globals.currentQuests.has(body.name):
 		#Globals.currentQuests.erase(body.name)
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho.
