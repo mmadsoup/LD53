@@ -3,6 +3,7 @@ extends Node2D
 @onready var ui = get_node("/root/Game/UI")
 @onready var area_2d = $Area2D
 @onready var transition = get_node("/root/Game/screenTransition")
+@onready var delivery_truck = $DeliveryTruck
 
 var exclude = ['Claw', 'StaticBody2D', 'Pivot', 'TruckColliders'] # don't detect these bodies
 
@@ -48,7 +49,6 @@ func _on_area_2d_body_entered(body):
 		Globals.emit_signal('play_incorrect_sound')
 		Globals.emit_signal('screen_shake')
 	body.collision_layer = 3
-	#get_tree().root.add_child(_d)
 	
 
 func _on_area_2d_body_exited(body):
