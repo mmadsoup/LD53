@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=29 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bthqqxb10y0a0" path="res://scenes/level_transition.tscn" id="15_18g0d"]
 [ext_resource type="AudioStream" uid="uid://dpw14tt1ojdyj" path="res://audio/drop.wav" id="19_ompbu"]
 [ext_resource type="PackedScene" uid="uid://dofk0afs51iyi" path="res://scenes/fade_transition.tscn" id="19_qxr0t"]
+[ext_resource type="AudioStream" uid="uid://blu6tsjhaeruq" path="res://audio/delivery.wav" id="19_x7ji5"]
 [ext_resource type="AudioStream" uid="uid://c38enekfv82s" path="res://audio/diesel-truck-idling-frontwav-14418.mp3" id="20_o6ysw"]
 [ext_resource type="AudioStream" uid="uid://cu56uo0rcvjrx" path="res://audio/car_start_drive_1-70196.mp3" id="21_kliqk"]
 
@@ -235,12 +236,18 @@ stream = ExtResource("19_ompbu")
 
 [node name="TruckIdle" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("20_o6ysw")
+volume_db = 15.0
 autoplay = true
-max_distance = 550.0
+max_distance = 400.0
 
 [node name="TruckLeave" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("21_kliqk")
 
 [node name="CorrectIncorrectSound" type="AudioStreamPlayer2D" parent="Audio"]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("19_x7ji5")
+volume_db = -5.0
+autoplay = true
 
 [node name="FadeTransition" parent="." instance=ExtResource("19_qxr0t")]
