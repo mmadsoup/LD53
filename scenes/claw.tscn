@@ -49,6 +49,8 @@ fall_off = SubResource("Curve_afgc1")
 
 [node name="Camera2D" type="Camera2D" parent="Pivot"]
 position = Vector2(58, 90)
+limit_left = -200
+limit_right = 600
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0

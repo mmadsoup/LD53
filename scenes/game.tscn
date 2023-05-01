@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=19 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
+[ext_resource type="Texture2D" uid="uid://b85bodcl07nk0" path="res://assets/bg/walltile.png" id="3_auysx"]
 [ext_resource type="PackedScene" uid="uid://crlx1a11nnw4b" path="res://scenes/box prefabs/box_1.tscn" id="3_nl543"]
 [ext_resource type="Texture2D" uid="uid://cxbi3bxd7ndck" path="res://assets/bg/bg1-dark.png" id="4_fwft8"]
 [ext_resource type="Texture2D" uid="uid://cvw7gdj3hldfd" path="res://assets/bg/bg2.png" id="4_t170p"]
@@ -16,8 +17,13 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3xok"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53hwb"]
-size = Vector2(380, 63)
+size = Vector2(531, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50bu6"]
+size = Vector2(129.75, 288)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7ugy6")
@@ -30,13 +36,55 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
-position = Vector2(189.25, 2.5)
-scale = Vector2(379.5, 13)
+visible = false
+position = Vector2(265.25, 2.5)
+scale = Vector2(531.5, 13)
 mesh = SubResource("BoxMesh_p3rl5")
 
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="StaticBody2D"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_a3xok")
+position = Vector2(573.5, -79.5)
+scale = Vector2(-85, 177)
+mesh = SubResource("BoxMesh_p3rl5")
+texture = ExtResource("3_auysx")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(190, 27.5)
+position = Vector2(265.5, 27.5)
 shape = SubResource("RectangleShape2D_53hwb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(577.125, -72)
+shape = SubResource("RectangleShape2D_50bu6")
+
+[node name="TextureRect" type="TextureRect" parent="StaticBody2D"]
+offset_top = -5.0
+offset_right = 529.0
+offset_bottom = 40.0
+texture = ExtResource("3_auysx")
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D"]
+offset_left = 512.0
+offset_top = -181.0
+offset_right = 638.0
+offset_bottom = 54.0
+texture = ExtResource("3_auysx")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_top = 10.0
+offset_right = 571.0
+offset_bottom = 40.0
+color = Color(0.32549, 0.262745, 0.498039, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D"]
+offset_left = 527.0
+offset_top = -184.0
+offset_right = 651.0
+offset_bottom = 84.0
+color = Color(0.32549, 0.262745, 0.498039, 1)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_nl543")]
 position = Vector2(82, 114)
@@ -88,11 +136,40 @@ centered = false
 position = Vector2(-102, 178)
 scale = Vector2(0.413, 0.413)
 
-[node name="UI" parent="." node_paths=PackedStringArray("testSpawn") instance=ExtResource("9_ylmwa")]
-testSpawn = NodePath("../testspawn")
+[node name="UI" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("9_ylmwa")]
+spawnPoints = NodePath("../spawnpoints")
 testBox = ExtResource("3_nl543")
 box_shapes = Array[PackedScene]([ExtResource("3_nl543"), ExtResource("10_ydr0f"), ExtResource("11_qnfxf")])
 questPrompt = ExtResource("10_tw4pb")
 
-[node name="testspawn" type="Node2D" parent="."]
+[node name="spawnpoints" type="Node2D" parent="."]
+
+[node name="testspawn" type="Node2D" parent="spawnpoints"]
 position = Vector2(189, -40)
+
+[node name="testspawn2" type="Node2D" parent="spawnpoints"]
+position = Vector2(245, 76)
+
+[node name="testspawn3" type="Node2D" parent="spawnpoints"]
+position = Vector2(283, 75)
+
+[node name="testspawn4" type="Node2D" parent="spawnpoints"]
+position = Vector2(332, 75)
+
+[node name="testspawn8" type="Node2D" parent="spawnpoints"]
+position = Vector2(114, 76)
+
+[node name="testspawn9" type="Node2D" parent="spawnpoints"]
+position = Vector2(152, 75)
+
+[node name="testspawn10" type="Node2D" parent="spawnpoints"]
+position = Vector2(201, 75)
+
+[node name="testspawn5" type="Node2D" parent="spawnpoints"]
+position = Vector2(371, 75)
+
+[node name="testspawn6" type="Node2D" parent="spawnpoints"]
+position = Vector2(409, 74)
+
+[node name="testspawn7" type="Node2D" parent="spawnpoints"]
+position = Vector2(458, 74)

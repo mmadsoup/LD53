@@ -22,8 +22,8 @@ texture = ExtResource("2_umd7g")
 script = ExtResource("3_coi27")
 
 [node name="boxLabel" parent="Sprite2D" instance=ExtResource("4_77y2n")]
-position = Vector2(4, 6)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-5, 10)
+scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)

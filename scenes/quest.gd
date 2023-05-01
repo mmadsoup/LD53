@@ -1,12 +1,13 @@
 extends CanvasLayer
 
 const validObjectCharacters ="123457890abcdefgjklmnopqrstuvwxyzBCDEFGHIJKLMNOPQRSTUVWXYZ"
+
  #"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 const maxDuplicates = 3 #maybe this will do something later if we need it, using count()
 var numberOfObjectsNeeded = 4
-
+var totalboxes = 30  #increase to up difficulty?
 @onready var charwindow = $ColorRect/Charwindow
-@export var testSpawn:Node2D
+@export var spawnPoints:Node2D
 @export var testBox:PackedScene
 @export var box_shapes : Array[PackedScene]
 @export var questPrompt:PackedScene
@@ -55,7 +56,10 @@ func populateQuestUI(makeBoxes:bool=false):
 #	if makeBoxes:_makeTestBoxes()
 
 func _makeTestBoxes(): #random boxes here
+	var leftOverChars = validObjectCharacters
+	var boxestomake = totalboxes
 	for g in Globals.currentQuests:
+		boxestomake-=1
 		var _r = RandomNumberGenerator.new()
 		_r.randomize()
 		var _n = _r.randi_range(0, box_shapes.size() - 1)
@@ -63,7 +67,21 @@ func _makeTestBoxes(): #random boxes here
 		var _b = box_shapes[_n].instantiate()
 		_b.name = g
 		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
-		_b.set_position(testSpawn.position)
+		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
+		get_parent().add_child.call_deferred(_b)
+		if leftOverChars.contains(g):
+			leftOverChars.replace(g,'')
+	for b in boxestomake:
+		var _r = RandomNumberGenerator.new()
+		_r.randomize()
+		var _n = _r.randi_range(0, box_shapes.size() - 1)
+		
+		var fakename = leftOverChars[randi_range(0,leftOverChars.length()-1)]
+		
+		var _b = box_shapes[_n].instantiate()
+		_b.name = fakename
+		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = fakename
+		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
 		get_parent().add_child.call_deferred(_b)
 #		var box = testBox.instantiate()
 #		box.name = g
