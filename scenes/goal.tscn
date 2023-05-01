@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://i04iweywhtkk"]
+[gd_scene load_steps=13 format=3 uid="uid://i04iweywhtkk"]
 
 [ext_resource type="Script" path="res://scripts/goalcheck.gd" id="1_faqd6"]
 [ext_resource type="Shader" path="res://material_shader/vibrate.gdshader" id="2_a1hpg"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ssinsms0h5s2" path="res://assets/cautionstripe.png" id="3_ik5ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s52f"]
-size = Vector2(329, 84.5)
+size = Vector2(226, 229)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7cw8"]
 shader = ExtResource("2_a1hpg")
@@ -51,13 +51,19 @@ _data = {
 "truck_depart": SubResource("Animation_k0d6k")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnq36"]
+size = Vector2(252, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hhpv"]
+size = Vector2(161, 188)
+
 [node name="goal" type="Node2D"]
 script = ExtResource("1_faqd6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(71.5, -57)
+position = Vector2(129, -205.5)
 shape = SubResource("RectangleShape2D_1s52f")
 
 [node name="DeliveryTruck" type="Sprite2D" parent="."]
@@ -80,4 +86,15 @@ libraries = {
 "": SubResource("AnimationLibrary_8t43n")
 }
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(116, -41)
+shape = SubResource("RectangleShape2D_hnq36")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-48.5, -93)
+shape = SubResource("RectangleShape2D_6hhpv")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

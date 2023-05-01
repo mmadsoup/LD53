@@ -32,6 +32,7 @@ script = ExtResource("1_4wr3e")
 move_speed = 150
 
 [node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, 2)
 
 [node name="Pivot" type="StaticBody2D" parent="."]
 
@@ -63,7 +64,7 @@ script = ExtResource("2_alu1d")
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../Pivot")
 node_b = NodePath("../Claw")
-length = 5.0
+length = 1.0
 
 [node name="Claw" type="RigidBody2D" parent="."]
 position = Vector2(0, 12)

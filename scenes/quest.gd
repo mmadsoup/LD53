@@ -5,7 +5,7 @@ const validColors=["ff5470","7fceff","ff9b71","00bcaa"]
  #"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 const maxDuplicates = 3 #maybe this will do something later if we need it, using count()
 var numberOfObjectsNeeded = 4
-var totalboxes = 30  #increase to up difficulty?
+
 @onready var charwindow = $ColorRect/Charwindow
 @export var spawnPoints:Node2D
 @export var testBox:PackedScene
@@ -63,7 +63,7 @@ func populateQuestUI(makeBoxes:bool=false):
 
 func _makeTestBoxes(): #random boxes here
 	var leftOverChars = validObjectCharacters
-	var boxestomake = totalboxes
+	var boxestomake = Globals.totalboxes
 	for g in Globals.currentQuests:
 		boxestomake-=1
 		var _r = RandomNumberGenerator.new()

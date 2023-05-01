@@ -13,3 +13,5 @@ var quest_boxes = [] # Store boxes for quests so we can highlight them at game s
 
 var grabbed_item
 var grab = false
+
+var totalboxes = 6  #increase to up difficulty?

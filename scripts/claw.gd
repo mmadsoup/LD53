@@ -6,6 +6,7 @@ extends Node2D
 @onready var claw = $Claw
 @onready var damped_spring_joint_2d = $DampedSpringJoint2D
 
+const restlen = 1
 func _ready():
 	line_2d.add_point(pivot.position, 0)
 	line_2d.add_point(claw.position, 1)
@@ -31,7 +32,7 @@ func _process(delta):
 		if Globals.grab:
 			damped_spring_joint_2d.rest_length = 100
 		else:
-			damped_spring_joint_2d.rest_length = 5
+			damped_spring_joint_2d.rest_length = restlen
 		
 	if Globals.grab and Globals.grabbed_item != null:
-		damped_spring_joint_2d.rest_length = 5
+		damped_spring_joint_2d.rest_length = restlen
