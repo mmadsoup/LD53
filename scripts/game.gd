@@ -6,6 +6,7 @@ extends Node2D
 @onready var truck_idle = $Audio/TruckIdle
 @onready var truck_leave = $Audio/TruckLeave
 @onready var goal = $goal
+@onready var truck_collider_back = $WorldEnvironment/TruckColliderBack
 
 @onready var correct_incorrect_sound = $Audio/CorrectIncorrectSound
 
