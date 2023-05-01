@@ -11,16 +11,21 @@ var totalboxes = 30  #increase to up difficulty?
 @export var testBox:PackedScene
 @export var box_shapes : Array[PackedScene]
 @export var questPrompt:PackedScene
-#
+
+var outline_shader = preload('res://material_shader/outlineThatDisrespectsBoundaries.gdshader')
+
 #var charpic_irritated = preload('res://assets/ui/charwindow-irritated.png')
 #var charpic_neutral = preload('res://assets/ui/charwindow-neutral.png')
 #var charpic_happy = preload('res://assets/ui/charwindow-happy.png')
+
 func randomColor():
 	return validColors[randi_range(0,validColors.size()-1)]
 func _ready():
 	generateQuest()
 	Globals.connect('change_charpic_irritated', change_charpic_irritated)
 	Globals.connect('change_charpic_happy', change_charpic_happy)
+	highlight_quest_boxes()
+	
 func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
@@ -71,6 +76,9 @@ func _makeTestBoxes(): #random boxes here
 		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").add_theme_color_override("font_color",g[1])
 		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
 		get_parent().add_child.call_deferred(_b)
+		
+		Globals.quest_boxes.append(_b)
+		
 		if leftOverChars.contains(g[0]):
 			leftOverChars.replace(g[0],'')
 	for b in boxestomake:
@@ -104,3 +112,16 @@ func change_charpic_happy():
 	await get_tree().create_timer(1.0).timeout
 	#charwindow.texture = charpic_neutral
 	charwindow.play("neutral")
+	
+func highlight_quest_boxes():
+	for i in Globals.quest_boxes:
+		var _m = ShaderMaterial.new()
+		_m.set_shader_parameter('width', 1.5)
+		_m.set_shader(outline_shader)
+		var _b = i.get_child(0)
+		_b.material = _m
+	
+	await get_tree().create_timer(5.0).timeout
+	for i in Globals.quest_boxes:
+		var _b = i.get_child(0)
+		_b.set_material(null)
