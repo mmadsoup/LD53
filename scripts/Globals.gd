@@ -6,6 +6,8 @@ signal screen_shake
 signal change_charpic_irritated
 signal change_charpic_happy
 
+signal change_truck_area_collision_layer
+
 var currentQuests = []
 var currentQuestNames = []
 var fulfilled = []

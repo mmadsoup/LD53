@@ -18,6 +18,6 @@ func emit_placement_particles(pos):
 	add_child(_p)
 	_p.emitting = true
 	#Globals.emit_signal('screen_shake')
-	Globals.emit_signal('change_charpic_irritated')
+	#Globals.emit_signal('change_charpic_irritated')
 	
 		

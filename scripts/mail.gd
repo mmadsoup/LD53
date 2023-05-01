@@ -9,6 +9,7 @@ func _on_area_2d_body_entered(body):
 		Globals.grabbed_item = self
 		$Area2D.collision_layer = 4
 		#Globals.emit_signal('screen_shake')
+		Globals.emit_signal('change_truck_area_collision_layer')
 
 		#area_2d.queue_free()
 	if str(body).split(":")[0] == 'StaticBody2D':
@@ -18,6 +19,8 @@ func _release():
 	global_position=claw.global_position
 	Globals.grabbed_item = null
 	Globals.grab = false
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.2).timeout
+	Globals.emit_signal('change_truck_area_collision_layer')
+	await get_tree().create_timer(0.8).timeout
 	$Area2D.collision_layer = 1
 	
