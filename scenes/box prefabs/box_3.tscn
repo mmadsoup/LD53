@@ -9,7 +9,7 @@
 size = Vector2(35, 24)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_i2hm3"]
-polygon = PackedVector2Array(-19, -7, -19, 12, 18, 12, 18, -7)
+polygon = PackedVector2Array(-18, -7, -18, 11, 17, 11, 17, -7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gi181"]
 size = Vector2(36, 27.25)

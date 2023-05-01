@@ -30,6 +30,9 @@ polygon = PackedVector2Array(1, -1, 0, 176, 138, 176, 144, -1)
 
 [sub_resource type="Environment" id="Environment_k8uei"]
 background_mode = 3
+sdfgi_use_occlusion = true
+glow_enabled = true
+adjustment_enabled = true
 adjustment_saturation = 1.1
 
 [node name="Game" type="Node2D"]
@@ -102,7 +105,7 @@ position = Vector2(82, 114)
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
-color = Color(0.670588, 0.647059, 0.8, 1)
+color = Color(0.615686, 0.596078, 0.831373, 1)
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
