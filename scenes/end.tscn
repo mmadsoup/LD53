@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://caclfmpwssccy"]
+[gd_scene load_steps=4 format=3 uid="uid://caclfmpwssccy"]
 
 [ext_resource type="Texture2D" uid="uid://dmtexruyun04o" path="res://assets/main_menu/bg2.jpg" id="1_p8gjy"]
 [ext_resource type="PackedScene" uid="uid://dqbqqljymhosw" path="res://scenes/LevelText.tscn" id="2_g7iwf"]
+[ext_resource type="Texture2D" uid="uid://djcqsdoip0puy" path="res://assets/main_menu/char_trans.png" id="2_qko5m"]
 
 [node name="End" type="Node2D"]
 
@@ -12,14 +13,18 @@ offset_right = 343.0
 offset_bottom = 206.0
 texture = ExtResource("1_p8gjy")
 
+[node name="CharTrans" type="Sprite2D" parent="."]
+position = Vector2(135, 90)
+texture = ExtResource("2_qko5m")
+
 [node name="Label" parent="." instance=ExtResource("2_g7iwf")]
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 87.0
-offset_top = 38.0
-offset_right = 246.0
-offset_bottom = 79.0
+offset_left = 98.0
+offset_top = 40.0
+offset_right = 257.0
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -30,14 +35,14 @@ text = "Time's Up!"
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = 87.0
-offset_right = 341.0
-offset_bottom = 204.0
+offset_left = 106.0
+offset_top = 69.0
+offset_right = 260.0
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "Your score"
-horizontal_alignment = 1
+horizontal_alignment = 2
 autowrap_mode = 2
