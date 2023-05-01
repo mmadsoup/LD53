@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d310558rukv6l"]
 
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_alot4"]
-[ext_resource type="FontFile" uid="uid://dvacb1s6hm6o8" path="res://assets/ui/Counting Apples (Black).fnt" id="2_s2665"]
+[ext_resource type="FontFile" uid="uid://c66n0un1xr4yd" path="res://assets/ui/deltarune.ttf" id="2_netyu"]
 
 [node name="Timer" type="Control"]
 layout_mode = 3
@@ -18,12 +18,14 @@ offset_top = 3.0
 offset_right = 47.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.290196, 0.188235, 0.321569, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_s2665")
-text = "Timer"
-horizontal_alignment = 1
+theme_override_colors/font_shadow_color = Color(0.32549, 0.262745, 0.498039, 1)
+theme_override_colors/font_outline_color = Color(0.290196, 0.188235, 0.321569, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("2_netyu")
+theme_override_font_sizes/font_size = 22
+text = "99"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]

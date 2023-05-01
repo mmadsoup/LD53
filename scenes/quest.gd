@@ -38,7 +38,7 @@ func populateQuestUI(makeBoxes:bool=false):
 				pass
 			else:
 				var n = questPrompt.instantiate()
-				n.get_child(0).text=str(Globals.currentQuests.count(q))+"[font_size=13][color=#ff5470][font=res://assets/ui/Pixel Icons Compilation.ttf]"+q+"[/font][/color][/font_size]"
+				n.get_child(0).text=str(Globals.currentQuests.count(q))+"[font_size=13][color=#ff5470][outline_size=4][font=res://assets/ui/Pixel Icons Compilation.ttf]"+q+"[/font][/outline_size][/color][/font_size]"
 				$VBoxContainer.add_child(n)
 			coveredChars.append(q)
 	if makeBoxes:_makeTestBoxes()

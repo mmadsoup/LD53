@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjiqxalte7q2t"]
+[gd_scene load_steps=11 format=3 uid="uid://bjiqxalte7q2t"]
 
 [ext_resource type="Script" path="res://scripts/claw.gd" id="1_4wr3e"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_alu1d"]
 [ext_resource type="Texture2D" uid="uid://cklkhr2m76rhe" path="res://sprites/magnet.png" id="2_awek7"]
 [ext_resource type="Script" path="res://addons/shaker/shaker.gd" id="2_kyynj"]
 [ext_resource type="Script" path="res://scripts/unrotate.gd" id="3_w8sm3"]
+[ext_resource type="Shader" path="res://material_shader/outlineThatDisrespectsBoundaries.gdshader" id="4_iqa6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6se6f"]
 size = Vector2(21, 15)
@@ -14,6 +15,14 @@ size = Vector2(21, 15)
 [sub_resource type="Curve" id="Curve_afgc1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssonk"]
+shader = ExtResource("4_iqa6r")
+shader_parameter/color = Color(0.182679, 0.141681, 0.29347, 1)
+shader_parameter/width = 2.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="Claw" type="Node2D"]
 script = ExtResource("1_4wr3e")
@@ -71,6 +80,7 @@ scale = Vector2(54.8899, -17.8608)
 mesh = SubResource("BoxMesh_621iv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Claw"]
+material = SubResource("ShaderMaterial_ssonk")
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_awek7")
 script = ExtResource("3_w8sm3")

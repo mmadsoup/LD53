@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://i04iweywhtkk" path="res://scenes/goal.tscn" id="8_6d55c"]
 [ext_resource type="PackedScene" uid="uid://xxtv1q54jf52" path="res://scenes/ui.tscn" id="9_ylmwa"]
 [ext_resource type="PackedScene" uid="uid://dvgv7mrfv8ro5" path="res://assets/ui/scenes/quest_prompt.tscn" id="10_tw4pb"]
-[ext_resource type="PackedScene" uid="uid://3xm5tto6pmyc" path="res://scenes/box prefabs/box_2.tscn" id="10_ydr0f"]
-[ext_resource type="PackedScene" uid="uid://dem84v15dicyw" path="res://scenes/box prefabs/box_3.tscn" id="11_qnfxf"]
+[ext_resource type="PackedScene" uid="uid://bhgygv4hf4vb0" path="res://scenes/box prefabs/box_2.tscn" id="10_ydr0f"]
+[ext_resource type="PackedScene" uid="uid://b1f84hiamm1sx" path="res://scenes/box prefabs/box_3.tscn" id="11_qnfxf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 

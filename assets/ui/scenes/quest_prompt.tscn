@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvgv7mrfv8ro5"]
+[gd_scene load_steps=5 format=3 uid="uid://dvgv7mrfv8ro5"]
 
 [ext_resource type="Texture2D" uid="uid://dnv7pe40rfhfj" path="res://assets/ui/jobwindow.png" id="1_kn4km"]
+[ext_resource type="Shader" path="res://material_shader/outlineThatDisrespectsBoundaries.gdshader" id="1_y0upe"]
 [ext_resource type="FontFile" uid="uid://drhr2kyqowqui" path="res://assets/ui/PixelOperatorHBSC.ttf" id="2_p87dy"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2dk3e"]
+shader = ExtResource("1_y0upe")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
 [node name="questPrompt" type="TextureRect"]
+material = SubResource("ShaderMaterial_2dk3e")
 anchors_preset = -1
 anchor_right = 0.144
 anchor_bottom = 0.128
@@ -12,11 +22,14 @@ offset_bottom = -2.04
 texture = ExtResource("1_kn4km")
 
 [node name="Label" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 3.0
 offset_right = 32.0
 offset_bottom = 21.0
 theme_override_colors/default_color = Color(0.290196, 0.188235, 0.321569, 1)
+theme_override_colors/font_outline_color = Color(0.290196, 0.188235, 0.321569, 1)
+theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("2_p87dy")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
