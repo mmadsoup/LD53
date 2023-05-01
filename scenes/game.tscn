@@ -353,6 +353,8 @@ stream = ExtResource("19_ompbu")
 
 [node name="TruckIdle" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("20_o6ysw")
+autoplay = true
+max_distance = 550.0
 
 [node name="TruckLeave" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("21_kliqk")
