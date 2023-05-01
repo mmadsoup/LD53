@@ -12,6 +12,10 @@ signal play_correct_sound
 signal play_incorrect_sound
 signal play_drop_sound
 
+signal play_scene_transition
+signal play_fade_in_transition
+signal play_fade_out_transition
+
 var currentQuests = []
 var currentQuestNames = []
 var fulfilled = []

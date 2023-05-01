@@ -1,5 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://g0w2p08xtqnf"]
+[gd_scene load_steps=6 format=3 uid="uid://g0w2p08xtqnf"]
 
+[ext_resource type="PackedScene" uid="uid://dofk0afs51iyi" path="res://scenes/fade_transition.tscn" id="1_qaubb"]
+[ext_resource type="PackedScene" uid="uid://bmri40inyvtam" path="res://scenes/scene_transition.tscn" id="1_st3fp"]
 [ext_resource type="PackedScene" uid="uid://c7w6kcskt1wkh" path="res://scenes/label_needs.tscn" id="2_oces0"]
 [ext_resource type="FontFile" uid="uid://jpyybd51fkk3" path="res://assets/ui/Litebulb 8-bit.ttf" id="3_ijqol"]
 
@@ -23,6 +25,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_yq04y")
+
+[node name="FadeTransition" parent="." instance=ExtResource("1_qaubb")]
+
+[node name="screenTransition" parent="." instance=ExtResource("1_st3fp")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
