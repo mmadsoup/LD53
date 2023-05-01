@@ -5,6 +5,7 @@ const validColors=["ff5470","7fceff","ff9b71","00bcaa"]
  #"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 const maxDuplicates = 3 #maybe this will do something later if we need it, using count()
 var numberOfObjectsNeeded = 4
+@onready var score = $Score
 
 @onready var charwindow = $ColorRect/Charwindow
 @export var spawnPoints:Node2D
@@ -26,6 +27,8 @@ func _ready():
 	Globals.connect('change_charpic_happy', change_charpic_happy)
 	highlight_quest_boxes()
 	Globals.connect('spawn_boxes', _makeTestBoxes)
+	Globals.connect('update_score', update_score)
+	score.text = 'Score: 0'
 	
 func generateQuest():
 	for left in numberOfObjectsNeeded:
@@ -127,3 +130,6 @@ func highlight_quest_boxes():
 	for i in Globals.quest_boxes:
 		var _b = i.get_child(0)
 		_b.set_material(null)
+		
+func update_score():
+	score.text = 'Score: %s' % str(Globals.score)

@@ -75,6 +75,8 @@ texture = ExtResource("2_s0j7g")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="DeliveryTruck"]
 occluder = SubResource("OccluderPolygon2D_7jbq1")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="DeliveryTruck"]
+
 [node name="Cautionstripe" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(125, -15)

@@ -10,7 +10,6 @@ var exclude = ['Claw', 'StaticBody2D', 'Pivot', 'TruckColliders'] # don't detect
 func _ready():
 	Globals.connect('change_truck_area_collision_layer', change_collision_layer)
 
-
 func checkVictory():
 	#print(Globals.fulfilled)
 	var a = Globals.currentQuestNames.duplicate() #itll sort the main array if we dont do it like this
@@ -21,6 +20,7 @@ func checkVictory():
 		victory()
 	Globals.score+=Globals.scoreMultiplier*Globals.fulfilled.size()
 	print("score is  "+str(Globals.score))
+	Globals.emit_signal('update_score')
 func victory():
 	$AnimationPlayer.play("truck_depart")
 	await get_tree().create_timer(0.8).timeout
