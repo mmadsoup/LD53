@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=21 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -24,6 +24,9 @@ size = Vector2(531, 63)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50bu6"]
 size = Vector2(129.75, 288)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1xw1d"]
+polygon = PackedVector2Array(1, -1, 0, 176, 138, 176, 144, -1)
 
 [sub_resource type="Environment" id="Environment_k8uei"]
 background_mode = 3
@@ -76,6 +79,9 @@ offset_right = 638.0
 offset_bottom = 54.0
 texture = ExtResource("3_auysx")
 stretch_mode = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D/TextureRect2"]
+occluder = SubResource("OccluderPolygon2D_1xw1d")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
 offset_top = 10.0
@@ -185,6 +191,6 @@ position = Vector2(458, 74)
 environment = SubResource("Environment_k8uei")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.5
+energy = 0.4
 shadow_enabled = true
 height = 1.0
