@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhgygv4hf4vb0"]
+[gd_scene load_steps=8 format=3 uid="uid://bhgygv4hf4vb0"]
 
 [ext_resource type="Script" path="res://scripts/mail.gd" id="1_lfks8"]
 [ext_resource type="Texture2D" uid="uid://vk66ao4mefxe" path="res://sprites/box-2.png" id="2_umd7g"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ji4jl"]
 size = Vector2(28, 17)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pv0rh"]
+polygon = PackedVector2Array(-15, -9, -15, 9, 14, 9, 14, -9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gi181"]
 size = Vector2(28, 22.5)
@@ -28,6 +31,9 @@ scale = Vector2(1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_ji4jl")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pv0rh")
 
 [node name="Area2D" type="Area2D" parent="."]
 

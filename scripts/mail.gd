@@ -4,7 +4,7 @@ var claw
 
 
 func _on_area_2d_body_entered(body):
-	if str(body).split(":")[0] == "Claw" &&Globals.grab:
+	if str(body).split(":")[0] == "Claw" && Globals.grab and Globals.grabbed_item == null:
 		claw = body
 		Globals.grabbed_item = self
 		$Area2D.collision_layer = 4
