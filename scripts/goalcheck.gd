@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var ui = get_node("/root/Game/UI")
 @onready var area_2d = $Area2D
-
+@onready var transition = get_node("/root/Game/screenTransition")
 func _ready():
 	Globals.connect('change_truck_area_collision_layer', change_collision_layer)
 
@@ -26,10 +26,15 @@ func checkVictory():
 
 	if a.hash()==b.hash():
 		victory()
-		
+	Globals.score+=Globals.scoreMultiplier*Globals.fulfilled.size()
+	print("score is  "+str(Globals.score))
 func victory():
 	$AnimationPlayer.play("truck_depart")
-
+	await get_tree().create_timer(0.8).timeout
+	Globals.level+=1
+	transition.find_child("Label").text="Level"+str(Globals.level)
+	transition.find_child("AnimationPlayer").play("LevelTransition")
+	#reset level now
 
 func _on_area_2d_body_exited(body):
 	Globals.fulfilled.erase(str(body.name))

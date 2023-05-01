@@ -18,3 +18,7 @@ var grabbed_item
 var grab = false
 
 var totalboxes = 6  #increase to up difficulty?
+
+var score = 0
+var level = 1
+var scoreMultiplier=100
