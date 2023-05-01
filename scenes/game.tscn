@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bhgygv4hf4vb0" path="res://scenes/box prefabs/box_2.tscn" id="10_ydr0f"]
 [ext_resource type="PackedScene" uid="uid://b1f84hiamm1sx" path="res://scenes/box prefabs/box_3.tscn" id="11_qnfxf"]
 [ext_resource type="Shader" path="res://material_shader/transition.gdshader" id="15_su2wv"]
-[ext_resource type="FontFile" path="res://assets/ui/upheavtt.ttf" id="16_087nl"]
+[ext_resource type="FontFile" uid="uid://dhw2nhl2au2sw" path="res://assets/ui/upheavtt.ttf" id="16_087nl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
@@ -41,8 +41,11 @@ adjustment_saturation = 1.1
 size = Vector2(6, 52)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_421cj"]
-render_priority = 0
 shader = ExtResource("15_su2wv")
+shader_parameter/num_lines = 5.0
+shader_parameter/y_threshold = 0.0
+shader_parameter/line_color_a = Color(0, 0.737255, 0.666667, 1)
+shader_parameter/line_color_b = Color(0.172549, 0.435294, 0.6, 1)
 
 [sub_resource type="Animation" id="Animation_by0v3"]
 resource_name = "LevelTransition"
@@ -312,7 +315,7 @@ rotation = 0.443556
 [node name="Label" type="Label" parent="screenTransition"]
 offset_left = -152.0
 offset_top = 76.0
-offset_right = -7.0004
+offset_right = -7.00046
 offset_bottom = 144.0
 theme_override_colors/font_shadow_color = Color(0.182679, 0.141681, 0.29347, 1)
 theme_override_colors/font_outline_color = Color(1, 0.329412, 0.439216, 1)
