@@ -2,19 +2,16 @@ extends Node2D
 
 @onready var ui = get_node("/root/Game/UI")
 
-
 func _on_area_2d_body_entered(body):
-	print(body)
-	print(Globals.currentQuests)
-	#body.queue_free()
 	Globals.fulfilled.append(str(body.name))
-	if Globals.currentQuests.has(body.name):
+	if Globals.currentQuestNames.has(body.name):
 		#Globals.currentQuests.erase(body.name)
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
 		checkVictory()
 		Globals.emit_signal('change_charpic_happy')
 	else:
-		Globals.emit_signal('change_charpic_irritated')
+		if str(body.name) != 'Claw' and str(body.name) != 'StaticBody2D':
+			Globals.emit_signal('change_charpic_irritated')
 		
 func checkVictory():
 	print(Globals.fulfilled)

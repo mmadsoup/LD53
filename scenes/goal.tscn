@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ssinsms0h5s2" path="res://assets/cautionstripe.png" id="3_ik5ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1s52f"]
-size = Vector2(226, 229)
+size = Vector2(226, 270)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7cw8"]
 shader = ExtResource("2_a1hpg")
@@ -63,7 +63,7 @@ script = ExtResource("1_faqd6")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(129, -205.5)
+position = Vector2(129, -226)
 shape = SubResource("RectangleShape2D_1s52f")
 
 [node name="DeliveryTruck" type="Sprite2D" parent="."]
@@ -86,13 +86,13 @@ libraries = {
 "": SubResource("AnimationLibrary_8t43n")
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="TruckColliders" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TruckColliders"]
 position = Vector2(116, -41)
 shape = SubResource("RectangleShape2D_hnq36")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TruckColliders"]
 position = Vector2(-48.5, -93)
 shape = SubResource("RectangleShape2D_6hhpv")
 

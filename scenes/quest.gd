@@ -30,6 +30,7 @@ func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
 		Globals.currentQuests.append([obj,randomColor()])
+		Globals.currentQuestNames.append(obj)
 	populateQuestUI(true)
 func randomLetter():
 	var l = validObjectCharacters[randi_range(0,validObjectCharacters.length()-1)]

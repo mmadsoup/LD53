@@ -17,6 +17,13 @@ func _process(delta):
 	line_2d.set_point_position(0, pivot.position)
 	line_2d.set_point_position(1, Vector2(claw.position.x, claw.position.y - 4))
 	
+	if Input.is_action_pressed('ui_down'):
+		claw.linear_damp += 0.5
+		claw.angular_damp += 0.5
+	else:
+		claw.linear_damp = 0.0
+		claw.angular_damp = 0.0
+	
 	if Input.is_action_pressed('ui_left'):
 		pivot.position.x -= move_speed * delta
 	elif Input.is_action_pressed('ui_right'):
