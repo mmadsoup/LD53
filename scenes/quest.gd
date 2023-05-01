@@ -99,7 +99,7 @@ func _makeTestBoxes(): #random boxes here
 		_b.find_child("Sprite2D").find_child("boxLabel").find_child("Label").add_theme_color_override("font_color",randomColor())
 		_b.set_position(spawnPoints.get_child (randi_range(0,spawnPoints.get_child_count()-1)).position)
 		get_parent().add_child.call_deferred(_b)
-		Globals.all_boxes.append(b)
+		Globals.all_boxes.append(_b)
 #		var box = testBox.instantiate()
 #		box.name = g
 #		box.find_child("Sprite2D").find_child("boxLabel").find_child("Label").text = g
