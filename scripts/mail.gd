@@ -14,6 +14,7 @@ func _on_area_2d_body_entered(body):
 		#area_2d.queue_free()
 	if str(body).split(":")[0] == 'StaticBody2D':
 		Globals.emit_signal('emit_placement_particles', self.position)
+		Globals.emit_signal('play_drop_sound')
 
 func _release():
 	global_position=claw.global_position

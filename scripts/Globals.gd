@@ -8,6 +8,10 @@ signal change_charpic_happy
 
 signal change_truck_area_collision_layer
 
+signal play_correct_sound
+signal play_incorrect_sound
+signal play_drop_sound
+
 var currentQuests = []
 var currentQuestNames = []
 var fulfilled = []

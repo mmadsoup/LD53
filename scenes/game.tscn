@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cs1vd4iorvs2h"]
+[gd_scene load_steps=32 format=3 uid="uid://cs1vd4iorvs2h"]
 
 [ext_resource type="PackedScene" uid="uid://bjiqxalte7q2t" path="res://scenes/claw.tscn" id="1_2abi3"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_7ugy6"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://b1f84hiamm1sx" path="res://scenes/box prefabs/box_3.tscn" id="11_qnfxf"]
 [ext_resource type="Shader" path="res://material_shader/transition.gdshader" id="15_su2wv"]
 [ext_resource type="FontFile" uid="uid://dhw2nhl2au2sw" path="res://assets/ui/upheavtt.ttf" id="16_087nl"]
+[ext_resource type="AudioStream" uid="uid://dpw14tt1ojdyj" path="res://audio/drop.wav" id="19_ompbu"]
+[ext_resource type="AudioStream" uid="uid://c38enekfv82s" path="res://audio/diesel-truck-idling-frontwav-14418.mp3" id="20_o6ysw"]
+[ext_resource type="AudioStream" uid="uid://cu56uo0rcvjrx" path="res://audio/car_start_drive_1-70196.mp3" id="21_kliqk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3rl5"]
 
@@ -342,3 +345,16 @@ text = "lvl 2"
 libraries = {
 "": SubResource("AnimationLibrary_df1cy")
 }
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="DropBox" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("19_ompbu")
+
+[node name="TruckIdle" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("20_o6ysw")
+
+[node name="TruckLeave" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("21_kliqk")
+
+[node name="CorrectIncorrectSound" type="AudioStreamPlayer2D" parent="Audio"]

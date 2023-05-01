@@ -3,20 +3,14 @@ extends Node2D
 @onready var ui = get_node("/root/Game/UI")
 @onready var area_2d = $Area2D
 @onready var transition = get_node("/root/Game/screenTransition")
+
+var exclude = ['Claw', 'StaticBody2D', 'Pivot', 'TruckColliders'] # don't detect these bodies
+var in_dropoff_area = false
+
 func _ready():
 	Globals.connect('change_truck_area_collision_layer', change_collision_layer)
 
-func _on_area_2d_body_entered(body):
-	Globals.fulfilled.append(str(body.name))
-	if Globals.currentQuestNames.has(body.name):
-		#Globals.currentQuests.erase(body.name)
-		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
-		checkVictory()
-		Globals.emit_signal('change_charpic_happy')
-	else:
-		if str(body.name) != 'Claw' and str(body.name) != 'StaticBody2D':
-			Globals.emit_signal('change_charpic_irritated')
-		
+
 func checkVictory():
 	#print(Globals.fulfilled)
 	var a = Globals.currentQuests.duplicate() #itll sort the main array if we dont do it like this
@@ -36,15 +30,32 @@ func victory():
 	transition.find_child("AnimationPlayer").play("LevelTransition")
 	#reset level now
 
-func _on_area_2d_body_exited(body):
-	Globals.fulfilled.erase(str(body.name))
-	if Globals.currentQuests.has(body.name):
-		#Globals.currentQuests.erase(body.name)
-		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
-		
 func change_collision_layer():
 	if Globals.grabbed_item == null and not Globals.grab:
 		area_2d.collision_mask = 1
 	else:
 		area_2d.collision_mask = 6
 
+func _on_area_2d_body_entered(body):
+	if str(body.name) in exclude or Globals.fulfilled.has(body.name): return
+	in_dropoff_area = true
+	Globals.fulfilled.append(str(body.name))
+	print(Globals.currentQuestNames)
+	print('body: %s' % body.name)
+	if Globals.currentQuestNames.has(body.name):
+		#Globals.currentQuests.erase(body.name)
+		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho
+		checkVictory()
+		#Globals.emit_signal('play_correct_sound')
+		Globals.emit_signal('change_charpic_happy')
+	else:
+		Globals.emit_signal('change_charpic_irritated')
+		#Globals.emit_signal('play_incorrect_sound')
+
+
+func _on_area_2d_body_exited(body):
+	Globals.fulfilled.erase(str(body.name))
+	in_dropoff_area = false
+	if Globals.currentQuests.has(body.name):
+		#Globals.currentQuests.erase(body.name)
+		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho.
