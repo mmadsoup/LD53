@@ -20,10 +20,12 @@ signal spawn_boxes
 
 signal update_score
 
+
 var currentQuests = []
 var currentQuestNames = []
 var fulfilled = []
 
+var all_boxes = []
 var quest_boxes = [] # Store boxes for quests so we can highlight them at game start
 
 var grabbed_item

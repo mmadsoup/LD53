@@ -22,18 +22,21 @@ func checkVictory():
 	print("score is  "+str(Globals.score))
 	Globals.emit_signal('update_score')
 func victory():
-	$AnimationPlayer.play("truck_depart")
-	await get_tree().create_timer(0.8).timeout
+	#$AnimationPlayer.play("truck_depart")
+	#await get_tree().create_timer(0.8).timeout
 	Globals.level+=1
 	transition.find_child("Label").text="Level"+str(Globals.level)
 	transition.find_child("AnimationPlayer").play("LevelTransition")
-	await get_tree().create_timer(0.2).timeout
-	$AnimationPlayer.play("RESET")
-	Globals.emit_signal('spawn_boxes')
+#	$AnimationPlayer.play("RESET")
+	#get_tree().reload_current_scene()
 	
 	if Globals.quest_boxes:
 		for b in Globals.quest_boxes:
 			b.queue_free()
+	if Globals.all_boxes:
+		for b in Globals.all_boxes:
+			b.queue_free()
+	Globals.emit_signal('spawn_boxes')
 	
 	#reset level now
 
@@ -64,3 +67,9 @@ func _on_area_2d_body_exited(body):
 	if Globals.currentQuests.has(body.name):
 		#Globals.currentQuests.erase(body.name)
 		ui.populateQuestUI() #maybe we'll remove all dupes and then do strikethru or smth? more work tho.
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == 'LevelTransition':
+		get_tree().reload_current_scene()
+		$AnimationPlayer.play("RESET")

@@ -107,3 +107,4 @@ polygon = PackedVector2Array(-63, -179, -156, -86, -160, 0, 29, 2, 32, -179)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
