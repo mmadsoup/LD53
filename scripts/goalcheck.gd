@@ -27,6 +27,7 @@ func victory():
 	Globals.level+=1
 	transition.find_child("Label").text="Level"+str(Globals.level)
 	transition.find_child("AnimationPlayer").play("LevelTransition")
+	Globals.fulfilled = []
 #	$AnimationPlayer.play("RESET")
 	#get_tree().reload_current_scene()
 	
