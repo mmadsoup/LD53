@@ -22,15 +22,23 @@ var outline_shader = preload('res://material_shader/outlineThatDisrespectsBounda
 func randomColor():
 	return validColors[randi_range(0,validColors.size()-1)]
 func _ready():
-	print ("are we ready?")
-	generateQuest()
+
 	Globals.connect('change_charpic_irritated', change_charpic_irritated)
 	Globals.connect('change_charpic_happy', change_charpic_happy)
-	highlight_quest_boxes()
+	
 	Globals.connect('spawn_boxes', _makeTestBoxes)
 	Globals.connect('update_score', update_score)
+	newLevel()
+
+func newLevel():
+	Globals.currentQuests=[]
+	Globals.fulfilled=[]
+	Globals.currentQuestNames=[]
+	Globals.quest_boxes=[]
+	Globals.all_boxes=[]
+	generateQuest()
+	highlight_quest_boxes()
 	update_score()
-	
 func generateQuest():
 	for left in numberOfObjectsNeeded:
 		var obj = randomLetter()
