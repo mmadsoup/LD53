@@ -74,7 +74,9 @@ func populateQuestUI(makeBoxes:bool=false):
 #				$label_needs/quests.text+= str(Globals.currentQuests.count(q))+"x [font=res://assets/ui/Pixel Icons Compilation.ttf][color=red]"+q+"[/color][/font]\n"
 #			coveredChars.append(q)
 #	if makeBoxes:_makeTestBoxes()
-
+func _process(delta):
+	if Input.is_action_just_pressed("highlight"):
+		highlight_quest_boxes()
 func _makeTestBoxes(): #random boxes here
 	var leftOverChars = validObjectCharacters
 	var boxestomake = Globals.totalboxes +Globals.totalboxesIncrement*Globals.level
