@@ -32,7 +32,7 @@ var grabbed_item
 var grab = false
 
 var totalboxes = 6  #increase to up difficulty?
-var totalboxesIncrement = 5 #how many boxes add per level
+var totalboxesIncrement = 3 #how many boxes add per level
 var score = 0
 var level = 1
 var scoreMultiplier=100

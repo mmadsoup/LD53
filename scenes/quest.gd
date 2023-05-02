@@ -78,6 +78,7 @@ func populateQuestUI(makeBoxes:bool=false):
 func _makeTestBoxes(): #random boxes here
 	var leftOverChars = validObjectCharacters
 	var boxestomake = Globals.totalboxes +Globals.totalboxesIncrement*Globals.level
+	print("boxestomake "+str(boxestomake))
 	for g in Globals.currentQuests:
 		boxestomake-=1
 		var _r = RandomNumberGenerator.new()
