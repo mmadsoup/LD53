@@ -73,6 +73,6 @@ func _on_area_2d_body_exited(body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'LevelTransition':
 		await get_tree().reload_current_scene()
-		
+		print("hey cmon")
 		ui._ready()
 		$AnimationPlayer.play("RESET")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://xxtv1q54jf52"]
+[gd_scene load_steps=20 format=3 uid="uid://xxtv1q54jf52"]
 
 [ext_resource type="Script" path="res://scenes/quest.gd" id="1_6yd5a"]
-[ext_resource type="PackedScene" uid="uid://c7w6kcskt1wkh" path="res://scenes/label_needs.tscn" id="2_8q8yc"]
+[ext_resource type="PackedScene" path="res://scenes/label_needs.tscn" id="2_8q8yc"]
 [ext_resource type="Texture2D" uid="uid://757riy3dkccj" path="res://mockup.png" id="2_um4hw"]
 [ext_resource type="Texture2D" uid="uid://bdrwt3ot7cbhy" path="res://assets/ui/charwindow-neutral.png" id="4_jgcse"]
 [ext_resource type="PackedScene" uid="uid://dvgv7mrfv8ro5" path="res://assets/ui/scenes/quest_prompt.tscn" id="4_sgop5"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bols1lfs7cwgd" path="res://assets/ui/charwindow-irritated.png" id="8_y5pcg"]
 [ext_resource type="Texture2D" uid="uid://gl8ah03xl5eu" path="res://assets/ui/charwindow-neutral-blink2.png" id="9_rlwbw"]
 [ext_resource type="PackedScene" uid="uid://dqbqqljymhosw" path="res://scenes/LevelText.tscn" id="15_20hkq"]
+[ext_resource type="FontFile" uid="uid://dvacb1s6hm6o8" path="res://assets/ui/Counting Apples (Black).fnt" id="16_6pj0e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00bxq"]
 shader = ExtResource("5_qv137")
@@ -155,6 +156,9 @@ offset_left = 7.0
 offset_top = 2.0
 offset_right = 152.0
 offset_bottom = 15.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("16_6pj0e")
 theme_override_font_sizes/font_size = 10
-text = "score: "
+text = "SCORE: "

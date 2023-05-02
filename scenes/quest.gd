@@ -29,7 +29,7 @@ func _ready():
 	highlight_quest_boxes()
 	Globals.connect('spawn_boxes', _makeTestBoxes)
 	Globals.connect('update_score', update_score)
-	score.text = 'Score: 0'
+	update_score()
 	
 func generateQuest():
 	for left in numberOfObjectsNeeded:
@@ -134,4 +134,4 @@ func highlight_quest_boxes():
 		_b.set_material(null)
 		
 func update_score():
-	score.text = 'Score: %s' % str(Globals.score)
+	score.text = 'SCORE: %s' % str(Globals.score)
