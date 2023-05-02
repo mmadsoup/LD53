@@ -38,7 +38,7 @@ func victory():
 		for b in Globals.all_boxes:
 			b.queue_free()
 	Globals.emit_signal('spawn_boxes')
-	
+	Globals.emit_signal('reset_timer')
 	#reset level now
 
 func change_collision_layer():
