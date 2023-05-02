@@ -22,6 +22,7 @@ var outline_shader = preload('res://material_shader/outlineThatDisrespectsBounda
 func randomColor():
 	return validColors[randi_range(0,validColors.size()-1)]
 func _ready():
+	print ("are we ready?")
 	generateQuest()
 	Globals.connect('change_charpic_irritated', change_charpic_irritated)
 	Globals.connect('change_charpic_happy', change_charpic_happy)

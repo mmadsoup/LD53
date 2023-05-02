@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://caclfmpwssccy"]
+[gd_scene load_steps=7 format=3 uid="uid://caclfmpwssccy"]
 
 [ext_resource type="Texture2D" uid="uid://dmtexruyun04o" path="res://assets/main_menu/bg2.jpg" id="1_p8gjy"]
+[ext_resource type="Texture2D" uid="uid://df8p2bklc62ry" path="res://assets/main_menu/girl.png" id="2_a1mtx"]
 [ext_resource type="PackedScene" uid="uid://dqbqqljymhosw" path="res://scenes/LevelText.tscn" id="2_g7iwf"]
-[ext_resource type="Texture2D" uid="uid://djcqsdoip0puy" path="res://assets/main_menu/char_trans.png" id="2_qko5m"]
+[ext_resource type="Script" path="res://scripts/endscorefiller.gd" id="4_gppry"]
+[ext_resource type="FontFile" uid="uid://dhw2nhl2au2sw" path="res://assets/ui/upheavtt.ttf" id="5_tcmw1"]
+[ext_resource type="Texture2D" uid="uid://dlaie8f3wmdru" path="res://assets/main_menu/border.png" id="6_1vd8n"]
 
 [node name="End" type="Node2D"]
 
@@ -14,17 +17,17 @@ offset_bottom = 206.0
 texture = ExtResource("1_p8gjy")
 
 [node name="CharTrans" type="Sprite2D" parent="."]
-position = Vector2(135, 90)
-texture = ExtResource("2_qko5m")
+position = Vector2(134, 91)
+texture = ExtResource("2_a1mtx")
 
 [node name="Label" parent="." instance=ExtResource("2_g7iwf")]
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 98.0
-offset_top = 40.0
-offset_right = 257.0
-offset_bottom = 81.0
+offset_left = 117.0
+offset_top = 45.0
+offset_right = 276.0
+offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -35,14 +38,31 @@ text = "Time's Up!"
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 106.0
-offset_top = 69.0
-offset_right = 260.0
-offset_bottom = 172.0
+offset_left = 122.0
+offset_right = 276.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
-text = "Your score"
+text = "Your score:"
 horizontal_alignment = 2
 autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 158.0
+offset_top = 95.0
+offset_right = 279.0
+offset_bottom = 131.0
+theme_override_colors/font_outline_color = Color(0.182679, 0.141681, 0.29347, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_tcmw1")
+theme_override_font_sizes/font_size = 26
+text = "0000"
+horizontal_alignment = 2
+script = ExtResource("4_gppry")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(160, 91)
+scale = Vector2(1.18519, 1)
+texture = ExtResource("6_1vd8n")
