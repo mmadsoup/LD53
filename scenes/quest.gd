@@ -37,7 +37,7 @@ func newLevel():
 	Globals.quest_boxes=[]
 	Globals.all_boxes=[]
 	generateQuest()
-	highlight_quest_boxes()
+	#highlight_quest_boxes()
 	update_score()
 func generateQuest():
 	for left in numberOfObjectsNeeded:
@@ -137,9 +137,10 @@ func highlight_quest_boxes():
 		_b.material = _m
 	
 	await get_tree().create_timer(5.0).timeout
-	for i in Globals.quest_boxes:
-		var _b = i.get_child(0)
-		_b.set_material(null)
+	if Globals.quest_boxes:
+		for i in Globals.quest_boxes:
+			var _b = i.get_child(0)
+			_b.set_material(null)
 		
 func update_score():
 	score.text = 'SCORE: %s' % str(Globals.score)
