@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://pfwawo7mlx23"]
+[gd_scene load_steps=11 format=3 uid="uid://pfwawo7mlx23"]
 
 [ext_resource type="PackedScene" uid="uid://bmri40inyvtam" path="res://scenes/scene_transition.tscn" id="1_w0giw"]
 [ext_resource type="Texture2D" uid="uid://dmtexruyun04o" path="res://assets/main_menu/bg2.jpg" id="2_5r4pb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djcqsdoip0puy" path="res://assets/main_menu/char_trans.png" id="3_sxh8b"]
 [ext_resource type="Texture2D" uid="uid://3a1r43xrnrll" path="res://assets/main_menu/logo_trans.png" id="4_vo8m4"]
 [ext_resource type="FontFile" uid="uid://c66n0un1xr4yd" path="res://assets/ui/deltarune.ttf" id="6_dhbeq"]
+[ext_resource type="AudioStream" uid="uid://cw0cc7rwbfbnc" path="res://audio/03.wav" id="7_cl787"]
 
 [sub_resource type="GDScript" id="GDScript_ajl2f"]
 script/source = "extends Control
@@ -104,6 +105,10 @@ text = "start"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_dhbeq")
 text = "How to play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_cl787")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
